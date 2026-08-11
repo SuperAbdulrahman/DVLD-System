@@ -22,12 +22,12 @@ namespace DVLD.People
         enFindMode Mode;
         public int PersonID
         {
-            get { return ctrlPersonCard1.PersonID; }
+            get { return ctrlPersonCard2.PersonID; }
         }
 
         public Person SelectedPersonInfo
         {
-            get { return ctrlPersonCard1.SelectedPersonInfo; }
+            get { return ctrlPersonCard2.SelectedPersonInfo; }
         }
         private bool _FilterEnabled = true;
         public bool FilterEnabled
@@ -71,15 +71,15 @@ namespace DVLD.People
             if (Mode == enFindMode.PersonID)
             {
                 if (int.TryParse(txtFindValue.Text, out int value))
-                    ctrlPersonCard1.LoadPersonInfo(value);
+                    ctrlPersonCard2.LoadPersonInfo(value);
                 else
                     MessageBox.Show("Please Enter a number ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                ctrlPersonCard1.LoadPersonInfo(txtFindValue.Text);
+                ctrlPersonCard2.LoadPersonInfo(txtFindValue.Text);
             if (FilterEnabled)
             {
-                PersonSelected(ctrlPersonCard1.PersonID);
+                PersonSelected(ctrlPersonCard2.PersonID);
             }
         }
 
@@ -109,7 +109,7 @@ namespace DVLD.People
         {
             cbFilterType.SelectedIndex = (int)enFindMode.PersonID;
             txtFindValue.Text = PersonID.ToString();
-            ctrlPersonCard1.LoadPersonInfo(PersonID);
+            ctrlPersonCard2.LoadPersonInfo(PersonID);
         }
 
         public void LoadPersonInfo(int PersonID)

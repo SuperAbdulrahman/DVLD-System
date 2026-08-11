@@ -213,7 +213,7 @@ namespace DVLD_DataAccess
         public static DataTable GetUsers()
         {
             DataTable dt = new DataTable();
-            string query = @"SELECT * FROM Users;";
+            string query = @"SELECT * FROM Users_View;";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))

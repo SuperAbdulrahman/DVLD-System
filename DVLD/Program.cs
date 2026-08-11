@@ -19,7 +19,18 @@ namespace DVLD
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLoginScreen());
-            //Application.Run(new MainForm());
+            // Application.Run(new frmManageUsers());
+          //  Application.Run(new frmAddEditUser(21));
+            // Application.Run(new MainForm());
+            //Application.Run(new frmAddEditPerson());
+            //Another method
+            //using (frmLoginScreen frm = new frmLoginScreen())
+            //{
+            //    if(frm.ShowDialog() == DialogResult.OK)
+            //    {
+            //        Application.Run(new MainForm());
+            //    }
+            //}
         }
     }
 }

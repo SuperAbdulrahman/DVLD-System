@@ -39,25 +39,25 @@
             this.lblEmailValue = new System.Windows.Forms.Label();
             this.lblFullNameValue = new System.Windows.Forms.Label();
             this.lblPersonIDValue = new System.Windows.Forms.Label();
-            this.lblPersonID = new System.Windows.Forms.Label();
-            this.lblCountry = new System.Windows.Forms.Label();
-            this.lblPhone = new System.Windows.Forms.Label();
-            this.lblDateOfBirth = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblGender = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.lblNationalNo = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.pbPersonID = new System.Windows.Forms.PictureBox();
+            this.lblPersonID = new System.Windows.Forms.Label();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblNationalNo = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.gbPersonInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
@@ -221,96 +221,6 @@
             this.lblPersonIDValue.TabIndex = 46;
             this.lblPersonIDValue.Text = "??";
             // 
-            // lblPersonID
-            // 
-            this.lblPersonID.AutoSize = true;
-            this.lblPersonID.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblPersonID.Location = new System.Drawing.Point(16, 26);
-            this.lblPersonID.Name = "lblPersonID";
-            this.lblPersonID.Size = new System.Drawing.Size(105, 28);
-            this.lblPersonID.TabIndex = 44;
-            this.lblPersonID.Text = "Person ID:";
-            // 
-            // lblCountry
-            // 
-            this.lblCountry.AutoSize = true;
-            this.lblCountry.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblCountry.Location = new System.Drawing.Point(463, 219);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(90, 28);
-            this.lblCountry.TabIndex = 39;
-            this.lblCountry.Text = "Country:";
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblPhone.Location = new System.Drawing.Point(477, 167);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(76, 28);
-            this.lblPhone.TabIndex = 38;
-            this.lblPhone.Text = "Phone:";
-            // 
-            // lblDateOfBirth
-            // 
-            this.lblDateOfBirth.AutoSize = true;
-            this.lblDateOfBirth.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblDateOfBirth.Location = new System.Drawing.Point(416, 120);
-            this.lblDateOfBirth.Name = "lblDateOfBirth";
-            this.lblDateOfBirth.Size = new System.Drawing.Size(137, 28);
-            this.lblDateOfBirth.TabIndex = 37;
-            this.lblDateOfBirth.Text = "Date Of Birth:";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.Location = new System.Drawing.Point(16, 209);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(65, 28);
-            this.lblEmail.TabIndex = 33;
-            this.lblEmail.Text = "Email:";
-            // 
-            // lblGender
-            // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblGender.Location = new System.Drawing.Point(16, 162);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(85, 28);
-            this.lblGender.TabIndex = 32;
-            this.lblGender.Text = "Gender:";
-            // 
-            // lblAddress
-            // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblAddress.Location = new System.Drawing.Point(16, 256);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(90, 28);
-            this.lblAddress.TabIndex = 31;
-            this.lblAddress.Text = "Address:";
-            // 
-            // lblNationalNo
-            // 
-            this.lblNationalNo.AutoSize = true;
-            this.lblNationalNo.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblNationalNo.Location = new System.Drawing.Point(16, 115);
-            this.lblNationalNo.Name = "lblNationalNo";
-            this.lblNationalNo.Size = new System.Drawing.Size(126, 28);
-            this.lblNationalNo.TabIndex = 30;
-            this.lblNationalNo.Text = "National No:";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
-            this.lblName.Location = new System.Drawing.Point(16, 68);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(71, 28);
-            this.lblName.TabIndex = 29;
-            this.lblName.Text = "Name:";
-            // 
             // pbPersonID
             // 
             this.pbPersonID.Image = global::DVLD.Properties.Resources.Number_32;
@@ -320,6 +230,16 @@
             this.pbPersonID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonID.TabIndex = 45;
             this.pbPersonID.TabStop = false;
+            // 
+            // lblPersonID
+            // 
+            this.lblPersonID.AutoSize = true;
+            this.lblPersonID.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblPersonID.Location = new System.Drawing.Point(16, 26);
+            this.lblPersonID.Name = "lblPersonID";
+            this.lblPersonID.Size = new System.Drawing.Size(105, 28);
+            this.lblPersonID.TabIndex = 44;
+            this.lblPersonID.Text = "Person ID:";
             // 
             // pbImage
             // 
@@ -361,6 +281,36 @@
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 40;
             this.pictureBox7.TabStop = false;
+            // 
+            // lblCountry
+            // 
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblCountry.Location = new System.Drawing.Point(463, 219);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(90, 28);
+            this.lblCountry.TabIndex = 39;
+            this.lblCountry.Text = "Country:";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblPhone.Location = new System.Drawing.Point(477, 167);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(76, 28);
+            this.lblPhone.TabIndex = 38;
+            this.lblPhone.Text = "Phone:";
+            // 
+            // lblDateOfBirth
+            // 
+            this.lblDateOfBirth.AutoSize = true;
+            this.lblDateOfBirth.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblDateOfBirth.Location = new System.Drawing.Point(416, 120);
+            this.lblDateOfBirth.Name = "lblDateOfBirth";
+            this.lblDateOfBirth.Size = new System.Drawing.Size(137, 28);
+            this.lblDateOfBirth.TabIndex = 37;
+            this.lblDateOfBirth.Text = "Date Of Birth:";
             // 
             // pictureBox6
             // 
@@ -412,10 +362,59 @@
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
             // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblEmail.Location = new System.Drawing.Point(16, 209);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(65, 28);
+            this.lblEmail.TabIndex = 33;
+            this.lblEmail.Text = "Email:";
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblGender.Location = new System.Drawing.Point(16, 162);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(85, 28);
+            this.lblGender.TabIndex = 32;
+            this.lblGender.Text = "Gender:";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblAddress.Location = new System.Drawing.Point(16, 256);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(90, 28);
+            this.lblAddress.TabIndex = 31;
+            this.lblAddress.Text = "Address:";
+            // 
+            // lblNationalNo
+            // 
+            this.lblNationalNo.AutoSize = true;
+            this.lblNationalNo.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblNationalNo.Location = new System.Drawing.Point(16, 115);
+            this.lblNationalNo.Name = "lblNationalNo";
+            this.lblNationalNo.Size = new System.Drawing.Size(126, 28);
+            this.lblNationalNo.TabIndex = 30;
+            this.lblNationalNo.Text = "National No:";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.8F, System.Drawing.FontStyle.Bold);
+            this.lblName.Location = new System.Drawing.Point(16, 68);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(71, 28);
+            this.lblName.TabIndex = 29;
+            this.lblName.Text = "Name:";
+            // 
             // ctrlPersonCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.gbPersonInfo);
             this.Name = "ctrlPersonCard";
             this.Size = new System.Drawing.Size(1058, 340);

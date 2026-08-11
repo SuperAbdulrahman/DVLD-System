@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.ctrlPersonCard1 = new DVLD.ctrlPersonCard();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
+            this.txtFindValue = new System.Windows.Forms.TextBox();
             this.lblFindBy = new System.Windows.Forms.Label();
             this.cbFilterType = new System.Windows.Forms.ComboBox();
-            this.txtFindValue = new System.Windows.Forms.TextBox();
-            this.btnAddNew = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlPersonCard2 = new DVLD.ctrlPersonCard();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -56,12 +56,42 @@
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
             // 
-            // ctrlPersonCard1
+            // btnSearch
             // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(5, 139);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(1061, 351);
-            this.ctrlPersonCard1.TabIndex = 0;
+            this.btnSearch.BackgroundImage = global::DVLD.Properties.Resources.SearchPerson;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSearch.FlatAppearance.BorderSize = 2;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(821, 33);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(51, 42);
+            this.btnSearch.TabIndex = 49;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.BackgroundImage = global::DVLD.Properties.Resources.AddPerson_32;
+            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddNew.FlatAppearance.BorderSize = 2;
+            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNew.Location = new System.Drawing.Point(887, 33);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(53, 42);
+            this.btnAddNew.TabIndex = 48;
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // txtFindValue
+            // 
+            this.txtFindValue.BackColor = System.Drawing.Color.White;
+            this.txtFindValue.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFindValue.Location = new System.Drawing.Point(391, 39);
+            this.txtFindValue.Name = "txtFindValue";
+            this.txtFindValue.Size = new System.Drawing.Size(399, 31);
+            this.txtFindValue.TabIndex = 1;
+            this.txtFindValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFindValue_KeyPress);
+            this.txtFindValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFindValue_Validating);
             // 
             // lblFindBy
             // 
@@ -87,52 +117,22 @@
             this.cbFilterType.TabIndex = 46;
             this.cbFilterType.SelectedIndexChanged += new System.EventHandler(this.cbFilterType_SelectedIndexChanged);
             // 
-            // txtFindValue
-            // 
-            this.txtFindValue.BackColor = System.Drawing.Color.White;
-            this.txtFindValue.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFindValue.Location = new System.Drawing.Point(391, 39);
-            this.txtFindValue.Name = "txtFindValue";
-            this.txtFindValue.Size = new System.Drawing.Size(399, 31);
-            this.txtFindValue.TabIndex = 1;
-            this.txtFindValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFindValue_KeyPress);
-            this.txtFindValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFindValue_Validating);
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.BackgroundImage = global::DVLD.Properties.Resources.AddPerson_32;
-            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddNew.FlatAppearance.BorderSize = 2;
-            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Location = new System.Drawing.Point(887, 33);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(53, 42);
-            this.btnAddNew.TabIndex = 48;
-            this.btnAddNew.UseVisualStyleBackColor = true;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackgroundImage = global::DVLD.Properties.Resources.SearchPerson;
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSearch.FlatAppearance.BorderSize = 2;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(821, 33);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(51, 42);
-            this.btnSearch.TabIndex = 49;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // ctrlPersonCard2
+            // 
+            this.ctrlPersonCard2.Location = new System.Drawing.Point(3, 139);
+            this.ctrlPersonCard2.Name = "ctrlPersonCard2";
+            this.ctrlPersonCard2.Size = new System.Drawing.Size(1058, 340);
+            this.ctrlPersonCard2.TabIndex = 2;
+            // 
             // ctrPersonCardWithFilter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ctrlPersonCard1);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.ctrlPersonCard2);
             this.Controls.Add(this.gbFilter);
             this.Name = "ctrPersonCardWithFilter";
             this.Size = new System.Drawing.Size(1069, 506);
@@ -146,12 +146,12 @@
 
         #endregion
         private System.Windows.Forms.GroupBox gbFilter;
-        private ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.Label lblFindBy;
         private System.Windows.Forms.ComboBox cbFilterType;
         private System.Windows.Forms.TextBox txtFindValue;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private ctrlPersonCard ctrlPersonCard2;
     }
 }

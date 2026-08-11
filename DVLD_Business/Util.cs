@@ -9,6 +9,8 @@ namespace DVLD_Business
 {
     public static class Util
     {
+        private static string  _txtFileName = "D:\\DVLD-Full-Project\\session-data.txt";
+        private static string _DestinationFolder = @"C:\DVLD-People-Images\";
         public static string GenerateGUID()
         {
             Guid newGUID = Guid.NewGuid();
@@ -43,12 +45,12 @@ namespace DVLD_Business
             // this funciton will copy the image to the
             // project images foldr after renaming it
             // with GUID with the same extention, then it will update the sourceFileName with the new name.
-            string DestinationFolder = @"C:\DVLD-People-Images\";
-            if(!CreateFolderIfDoesNotExist(DestinationFolder))
+            
+            if(!CreateFolderIfDoesNotExist(_DestinationFolder))
             {
                 return false;
             }
-            string destinationFile = DestinationFolder +ReplaceFileNameWithGUID(sourceFile);
+            string destinationFile = _DestinationFolder +ReplaceFileNameWithGUID(sourceFile);
             try
             {
                 File.Copy(sourceFile, destinationFile, true);
@@ -62,9 +64,21 @@ namespace DVLD_Business
             return true;
         }
         // TxT session file
-        public static void ImportLoginDataFromSessionFile()
+        public static void SaveLoginDataToSessionFile(string username,string password)
         {
-            
+            string sessionInfo = username + "," + password;
+            File.WriteAllText(_txtFileName, sessionInfo);
+        }
+        public static string[] LoadLoginDataFromSessionFile()
+        {
+            string sessionInfo = File.ReadAllText(_txtFileName);
+
+            string[] parts = sessionInfo.Split(',');
+
+            string username = parts[0];
+            string password = parts[1];
+
+            return parts;
         }
 
     }

@@ -233,6 +233,16 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_Aug_9__2026__05_31_05_PM {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image Aug 9, 2026, 05_31_05 PM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ChatGPT_Image_Aug_9__2026__09_23_41_AM {
             get {
                 object obj = ResourceManager.GetObject("ChatGPT Image Aug 9, 2026, 09_23_41 AM", resourceCulture);

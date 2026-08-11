@@ -318,8 +318,10 @@ namespace DVLD_ConsoleTest
             // IsUserExists("Amged99");
             // DeleteUser(19);
             // GetAllUsers();
-            Login("useR4","1234");
-
+            // Login("useR4","1234");
+            //Util.SaveLoginDataToSessionFile("Ahmed","55");
+            string[] arr = Util.LoadLoginDataFromSessionFile();
+            Console.WriteLine(arr[0]+" , " + arr[1]);
 
           }
     }

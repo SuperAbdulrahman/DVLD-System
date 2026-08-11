@@ -42,7 +42,7 @@ namespace DVLD
                 return;
             }
 
-            _ShowPersonCardDetails();
+            _FillPersonCardInfo();
         }
         public void LoadPersonInfo(string NationalNo)
         {
@@ -56,9 +56,9 @@ namespace DVLD
             }
 
             _PersonID = _Person.PersonID; // Sync the ID!
-            _ShowPersonCardDetails();
+            _FillPersonCardInfo();
         }
-        private void _ShowPersonCardDetails()
+        private void _FillPersonCardInfo()
         {
             lblPersonIDValue.Text = _Person.PersonID.ToString();
             lblNationalNoValue.Text = _Person.NationalNo;

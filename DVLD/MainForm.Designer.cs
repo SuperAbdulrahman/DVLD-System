@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnTests = new System.Windows.Forms.Button();
-            this.pbMainBackground = new System.Windows.Forms.PictureBox();
             this.toolStripDropDownApplications = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.newDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,45 +56,27 @@
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbMainBackground = new System.Windows.Forms.PictureBox();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainBackground)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.Snow;
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(41, 41);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownApplications,
             this.toolStripDropDownPeople,
             this.toolStripDropDownDrivers,
             this.toolStripDropDownUsers,
             this.toolStripDropDownAccountSettings});
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(41, 41);
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1141, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1203, 71);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
-            // 
-            // btnTests
-            // 
-            this.btnTests.Location = new System.Drawing.Point(126, 149);
-            this.btnTests.Name = "btnTests";
-            this.btnTests.Size = new System.Drawing.Size(116, 90);
-            this.btnTests.TabIndex = 3;
-            this.btnTests.Text = "test";
-            this.btnTests.UseVisualStyleBackColor = true;
-            this.btnTests.Click += new System.EventHandler(this.btnTests_Click);
-            // 
-            // pbMainBackground
-            // 
-            this.pbMainBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbMainBackground.Image = global::DVLD.Properties.Resources.Logo_Final;
-            this.pbMainBackground.Location = new System.Drawing.Point(0, 25);
-            this.pbMainBackground.Name = "pbMainBackground";
-            this.pbMainBackground.Size = new System.Drawing.Size(1141, 568);
-            this.pbMainBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMainBackground.TabIndex = 1;
-            this.pbMainBackground.TabStop = false;
             // 
             // toolStripDropDownApplications
             // 
@@ -107,13 +87,16 @@
             this.manageApplicationTypesToolStripMenuItem,
             this.manageTestTypesToolStripMenuItem});
             this.toolStripDropDownApplications.Font = new System.Drawing.Font("Segoe UI Semibold", 11.2F, System.Drawing.FontStyle.Bold);
+            this.toolStripDropDownApplications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(56)))));
             this.toolStripDropDownApplications.Image = global::DVLD.Properties.Resources.Applications_64;
+            this.toolStripDropDownApplications.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripDropDownApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripDropDownApplications.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownApplications.ImageTransparentColor = System.Drawing.Color.Linen;
             this.toolStripDropDownApplications.Name = "toolStripDropDownApplications";
             this.toolStripDropDownApplications.ShowDropDownArrow = false;
             this.toolStripDropDownApplications.Size = new System.Drawing.Size(186, 68);
             this.toolStripDropDownApplications.Text = "Applications";
+            this.toolStripDropDownApplications.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolStripDropDownApplications.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // toolStripMenuItem2
@@ -130,7 +113,6 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(374, 70);
             this.toolStripMenuItem2.Text = " Driving Licenses Services ";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // newDrivingLicenseToolStripMenuItem
             // 
@@ -187,7 +169,6 @@
             this.realToolStripMenuItem.Name = "realToolStripMenuItem";
             this.realToolStripMenuItem.Size = new System.Drawing.Size(415, 38);
             this.realToolStripMenuItem.Text = "Release Detained Driving License";
-            this.realToolStripMenuItem.Click += new System.EventHandler(this.realToolStripMenuItem_Click);
             // 
             // retakeTestToolStripMenuItem
             // 
@@ -247,7 +228,7 @@
             this.manageDetainedLicensesToolStripMenuItem.Image = global::DVLD.Properties.Resources.Detain_512;
             this.manageDetainedLicensesToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.manageDetainedLicensesToolStripMenuItem.Name = "manageDetainedLicensesToolStripMenuItem";
-            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
+            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(313, 48);
             this.manageDetainedLicensesToolStripMenuItem.Text = "Manage Detained Licenses ";
             // 
             // detainLicenseToolStripMenuItem
@@ -255,7 +236,7 @@
             this.detainLicenseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.2F, System.Drawing.FontStyle.Bold);
             this.detainLicenseToolStripMenuItem.Image = global::DVLD.Properties.Resources.Detain_512;
             this.detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
-            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
+            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(313, 48);
             this.detainLicenseToolStripMenuItem.Text = "Detain License";
             // 
             // releaToolStripMenuItem
@@ -263,7 +244,7 @@
             this.releaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.2F, System.Drawing.FontStyle.Bold);
             this.releaToolStripMenuItem.Image = global::DVLD.Properties.Resources.Release_Detained_License_512;
             this.releaToolStripMenuItem.Name = "releaToolStripMenuItem";
-            this.releaToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
+            this.releaToolStripMenuItem.Size = new System.Drawing.Size(313, 48);
             this.releaToolStripMenuItem.Text = "Release Detained License";
             // 
             // manageApplicationTypesToolStripMenuItem
@@ -285,36 +266,34 @@
             // toolStripDropDownPeople
             // 
             this.toolStripDropDownPeople.Font = new System.Drawing.Font("Segoe UI Semibold", 11.2F, System.Drawing.FontStyle.Bold);
-            this.toolStripDropDownPeople.Image = global::DVLD.Properties.Resources.People_64;
-            this.toolStripDropDownPeople.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownPeople.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownPeople.Image")));
             this.toolStripDropDownPeople.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownPeople.Name = "toolStripDropDownPeople";
             this.toolStripDropDownPeople.ShowDropDownArrow = false;
-            this.toolStripDropDownPeople.Size = new System.Drawing.Size(137, 68);
+            this.toolStripDropDownPeople.Size = new System.Drawing.Size(114, 68);
             this.toolStripDropDownPeople.Text = "People";
             this.toolStripDropDownPeople.Click += new System.EventHandler(this.toolStripDropDownPeople_Click);
             // 
             // toolStripDropDownDrivers
             // 
             this.toolStripDropDownDrivers.Font = new System.Drawing.Font("Segoe UI Semibold", 11.2F, System.Drawing.FontStyle.Bold);
-            this.toolStripDropDownDrivers.Image = global::DVLD.Properties.Resources.Drivers_64;
-            this.toolStripDropDownDrivers.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownDrivers.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownDrivers.Image")));
             this.toolStripDropDownDrivers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownDrivers.Name = "toolStripDropDownDrivers";
             this.toolStripDropDownDrivers.ShowDropDownArrow = false;
-            this.toolStripDropDownDrivers.Size = new System.Drawing.Size(141, 68);
+            this.toolStripDropDownDrivers.Size = new System.Drawing.Size(118, 68);
             this.toolStripDropDownDrivers.Text = "Drivers";
             // 
             // toolStripDropDownUsers
             // 
             this.toolStripDropDownUsers.Font = new System.Drawing.Font("Segoe UI Semibold", 11.2F, System.Drawing.FontStyle.Bold);
-            this.toolStripDropDownUsers.Image = global::DVLD.Properties.Resources.Users_2_64;
-            this.toolStripDropDownUsers.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownUsers.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownUsers.Image")));
             this.toolStripDropDownUsers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownUsers.Name = "toolStripDropDownUsers";
             this.toolStripDropDownUsers.ShowDropDownArrow = false;
-            this.toolStripDropDownUsers.Size = new System.Drawing.Size(126, 68);
+            this.toolStripDropDownUsers.Size = new System.Drawing.Size(103, 68);
             this.toolStripDropDownUsers.Text = "Users";
+            this.toolStripDropDownUsers.Click += new System.EventHandler(this.toolStripDropDownUsers_Click);
             // 
             // toolStripDropDownAccountSettings
             // 
@@ -324,12 +303,11 @@
             this.toolStripSeparator1,
             this.logOutToolStripMenuItem});
             this.toolStripDropDownAccountSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 11.2F, System.Drawing.FontStyle.Bold);
-            this.toolStripDropDownAccountSettings.Image = global::DVLD.Properties.Resources.account_settings_64;
-            this.toolStripDropDownAccountSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownAccountSettings.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownAccountSettings.Image")));
             this.toolStripDropDownAccountSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownAccountSettings.Name = "toolStripDropDownAccountSettings";
             this.toolStripDropDownAccountSettings.ShowDropDownArrow = false;
-            this.toolStripDropDownAccountSettings.Size = new System.Drawing.Size(225, 68);
+            this.toolStripDropDownAccountSettings.Size = new System.Drawing.Size(202, 68);
             this.toolStripDropDownAccountSettings.Text = "Account Settings";
             // 
             // currentUserToolStripMenuItem
@@ -350,6 +328,7 @@
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(244, 38);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -364,21 +343,37 @@
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(244, 38);
             this.logOutToolStripMenuItem.Text = "Sign Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
+            // pbMainBackground
+            // 
+            this.pbMainBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(56)))));
+            this.pbMainBackground.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbMainBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbMainBackground.Image = global::DVLD.Properties.Resources.Logo_Final;
+            this.pbMainBackground.Location = new System.Drawing.Point(0, 71);
+            this.pbMainBackground.Name = "pbMainBackground";
+            this.pbMainBackground.Size = new System.Drawing.Size(1203, 573);
+            this.pbMainBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMainBackground.TabIndex = 1;
+            this.pbMainBackground.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 593);
-            this.Controls.Add(this.btnTests);
+            this.ClientSize = new System.Drawing.Size(1203, 644);
             this.Controls.Add(this.pbMainBackground);
             this.Controls.Add(this.toolStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "Home Page";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainBackground)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -410,7 +405,6 @@
         private System.Windows.Forms.ToolStripMenuItem manageDetainedLicensesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detainLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem releaToolStripMenuItem;
-        private System.Windows.Forms.Button btnTests;
         private System.Windows.Forms.ToolStripMenuItem currentUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;

@@ -34,16 +34,6 @@ namespace DVLD
             frm.ShowDialog();
         }
 
-        private void realToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTests_Click(object sender, EventArgs e)
         {
             frmLoginScreen frm = new frmLoginScreen();
@@ -52,7 +42,28 @@ namespace DVLD
 
         private void currentUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmUserInfo frm = new frmUserInfo(SessionInfo.currentUser.UserID);
+            frm.ShowDialog();
+        }
 
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            //frmLoginScreen frm = new frmLoginScreen();
+            //frm.ShowDialog();
+            this.Close();
+        }
+
+        private void toolStripDropDownUsers_Click(object sender, EventArgs e)
+        {
+            frmManageUsers frm = new frmManageUsers();
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
         }
     }
 }

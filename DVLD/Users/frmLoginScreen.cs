@@ -21,13 +21,16 @@ namespace DVLD.Users
             
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (!this.ValidateChildren())
+            {
+                MessageBox.Show("Complete missing fields","Error" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             user = User.Login(txtUsername.Text, txtPassword.Text);
             if (user == null)
             {
@@ -42,8 +45,24 @@ namespace DVLD.Users
             else
             {
                 _UserID = user.UserID;
-                MainForm frm = new MainForm(_UserID);
-                frm.ShowDialog();
+                if (cbRememberMe.Checked)
+                    _SaveCurrentSessionInfo(txtUsername.Text, txtPassword.Text);
+                else
+                    _RemoveCurrentSessionInfo();
+                this.Hide();
+
+                using (MainForm frm = new MainForm(_UserID))
+                {
+                    txtPassword.Text = string.Empty;
+                    txtUsername.Text = string.Empty;
+                    SessionInfo.currentUser = user;
+                    frm.ShowDialog();
+                }
+
+                // MainForm was closed.
+                // Therefore, user logged out.
+                _LoadCurrentSessionInfo();
+                this.Show(); ;
             }
         }
 
@@ -53,6 +72,7 @@ namespace DVLD.Users
             {
                 errorProvider.SetError(txtUsername, "Username cannot be empty or white space!");
                 txtUsername.Focus();
+                e.Cancel = true;
             }
             else
                 errorProvider.SetError(txtUsername, "");
@@ -64,6 +84,7 @@ namespace DVLD.Users
             {
                 errorProvider.SetError(txtPassword, "Username cannot be empty or white space!");
                 txtPassword.Focus();
+                e.Cancel = true;
             }
             else
                 errorProvider.SetError(txtPassword, "");
@@ -71,11 +92,37 @@ namespace DVLD.Users
 
         private void frmLoginScreen_Load(object sender, EventArgs e)
         {
-
+            _LoadCurrentSessionInfo();
         }
-        private void _ImportLoginDataFromSessionFile()
+        private void _SaveCurrentSessionInfo(string username,string password)
+        {
+            Util.SaveLoginDataToSessionFile(username, password);
+            //SessionInfo.currentUsername = username;
+            //SessionInfo.currentPassword = password;
+        }
+        private void _LoadCurrentSessionInfo()
+        {
+            string[] LoginInfo = Util.LoadLoginDataFromSessionFile();
+            txtUsername.Text = LoginInfo[0];
+            txtPassword.Text = LoginInfo[1];
+            //txtUsername.Text = SessionInfo.currentUsername;
+            //txtPassword.Text = SessionInfo.currentPassword;
+        }
+        private void _RemoveCurrentSessionInfo()
+        {
+            _SaveCurrentSessionInfo("","");
+            //SessionInfo.currentUsername = string.Empty;
+            //SessionInfo.currentPassword = string.Empty;
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

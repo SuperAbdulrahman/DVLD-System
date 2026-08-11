@@ -45,7 +45,7 @@ namespace DVLD.People
                 MessageBox.Show("Some fields are not valid! Hover over the red icons to see the errors.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // This completely halts the save process!
             }
-            if(!_HandlePersonImage())
+            if (!_HandlePersonImage())
             {
                 return;
             }
@@ -62,7 +62,7 @@ namespace DVLD.People
             _Person.DateOfBirth = dateTimePicker1.Value;
             _Person.ImagePath = pbImage.ImageLocation;
             string Title, Caption;
-            if(Mode ==enMode.AddNew)
+            if (Mode == enMode.AddNew)
             {
                 Title = "Are you sure want to add this person ?";
                 Caption = "Adding A New Person";
@@ -74,13 +74,13 @@ namespace DVLD.People
                 Caption = "Updating Person Info";
             }
 
-            if (MessageBox.Show(Title, Caption,MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            if (MessageBox.Show(Title, Caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
                 if (_Person.Save())
                 {
                     MessageBox.Show("Changed Applied Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lblPersonIDResult.Text = _Person.PersonID.ToString();
-                    DataBack?.Invoke(this,_Person.PersonID);
+                    DataBack?.Invoke(this, _Person.PersonID);
                     //isApplied?.Invoke(true);
                 }
                 else
@@ -91,14 +91,14 @@ namespace DVLD.People
 
         private void frmAddEditPerson_Load(object sender, EventArgs e)
         {
-          
+
             _LoadContries();
             _PersonDetails(Mode);
 
         }
         private void _PersonDetails(enMode mode)
         {
-            switch (mode)   
+            switch (mode)
             {
                 case enMode.AddNew:
                     _Person = new Person();
@@ -108,22 +108,22 @@ namespace DVLD.People
                     dateTimePicker1.MinDate = DateTime.Now.AddYears(-100);
                     rbMale.Checked = true;
                     llRemove.Visible = false;
-                    
-                  
+
+
                     break;
                 case enMode.Edit:
                     _Person = Person.Find(_PersonID);
                     lblTitle.Text = "Edit Person";
                     lblPersonIDResult.Text = _Person.PersonID.ToString();
-                    txtFirstName.Text =  _Person.FirstName;
-                    txtSecondName.Text =  _Person.SecondName;
-                    txtThirdName.Text =  _Person.ThirdName;
-                    txtLastName.Text   = _Person.LastName;
+                    txtFirstName.Text = _Person.FirstName;
+                    txtSecondName.Text = _Person.SecondName;
+                    txtThirdName.Text = _Person.ThirdName;
+                    txtLastName.Text = _Person.LastName;
                     txtNationalNo.Text = _Person.NationalNo;
-                    txtEmail.Text =      _Person.Email;
-                    txtPhone.Text =      _Person.Phone;
-                    txtAddress.Text =    _Person.Address;
-                    cbCountries.SelectedValue =_Person.NationalityCountryID;
+                    txtEmail.Text = _Person.Email;
+                    txtPhone.Text = _Person.Phone;
+                    txtAddress.Text = _Person.Address;
+                    cbCountries.SelectedValue = _Person.NationalityCountryID;
                     dateTimePicker1.Value = _Person.DateOfBirth;
                     if (!_Person.Gender)
                         rbMale.Checked = true;
@@ -133,7 +133,7 @@ namespace DVLD.People
                     if (string.IsNullOrEmpty(pbImage.ImageLocation))
                         llRemove.Visible = false;
 
-                        break;
+                    break;
                 default:
                     break;
             }
@@ -146,77 +146,62 @@ namespace DVLD.People
             cbCountries.ValueMember = "CountryID";
             cbCountries.DataSource = dtCountries;
         }
-        private void txtNationalNo_Validating(object sender, CancelEventArgs e)
-        {
-            if(string.IsNullOrWhiteSpace(txtNationalNo.Text) || (Person.IsPersonExist(txtNationalNo.Text.Trim()) &&txtNationalNo.Text.Trim() != _Person.NationalNo))
-            {
-                errorProvider.SetError(txtNationalNo,"National Number already exist, please enter another one");
-                txtNationalNo.Focus();
-            }
-            else
-                errorProvider.SetError(txtNationalNo, "");
-        }
 
-        private void txtFirstName_Validating(object sender, CancelEventArgs e)
+        // Validation methods
+        private void Validating_textBoxes(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txtFirstName.Text.Trim()))
+            TextBox textBox = (TextBox)sender;
+            if (!_ValidationRequired(textBox))
             {
-                errorProvider.SetError(txtFirstName, "First Name cannot be empty or white space!");
-                txtFirstName.Focus();
+                e.Cancel = true;
+                return;
             }
-            else
-                errorProvider.SetError(txtFirstName, "");
-        }
-
-        private void txtSecondName_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtSecondName.Text))
+            if (!_ValidateNationalNo())
             {
-                errorProvider.SetError(txtSecondName, "Second Name cannot be empty or white space!");
-                txtSecondName.Focus();
+                e.Cancel = true;
+                return;
             }
-            else
-                errorProvider.SetError(txtSecondName, "");
-        }
-
-        private void txtLastName_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            if (!_ValidateEmail())
             {
-                errorProvider.SetError(txtLastName, "Last Name cannot be empty or white space!");
-                txtLastName.Focus();
+                e.Cancel = true;
+                return;
             }
-            else
-                errorProvider.SetError(txtLastName, "");
         }
-
-        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        private bool _ValidationRequired(TextBox textBox)
         {
-            if (!Validation.IsValidEmail(txtEmail.Text.Trim()) &&(!string.IsNullOrWhiteSpace(txtEmail.Text.Trim())))
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                errorProvider.SetError(textBox, "This Field cannot be empty or whitespace!");
+                return false;
+            }
+            errorProvider.SetError(textBox, "");
+            return true;
+        }
+        private bool _ValidateNationalNo()
+        {
+            if (Person.IsPersonExist(txtNationalNo.Text))
+            {
+                errorProvider.SetError(txtNationalNo, "National Number already exist, please enter another one");
+                return false;
+            }
+
+            errorProvider.SetError(txtNationalNo, "");
+            return true;
+
+        }
+        private bool _ValidateEmail()
+        {
+            if (!Validation.IsValidEmail(txtEmail.Text.Trim()))
             {
                 errorProvider.SetError(txtEmail, "Please Enter a correct Email Format!");
-                txtEmail.Focus();
+                return false;
+
             }
-            else
-                errorProvider.SetError(txtEmail, "");
+            errorProvider.SetError(txtEmail, "");
+            return true;
         }
 
-        private void txtPhone_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPhone.Text))
-            {
-                errorProvider.SetError(txtPhone, "Phone Number be empty or white space!");
-                txtPhone.Focus();
-            }
-            else
-                errorProvider.SetError(txtPhone, "");
-        }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-
-            Close();
-        }
 
 
         private void rbMaleFemale_CheckedChanged(object sender, EventArgs e)
@@ -236,6 +221,7 @@ namespace DVLD.People
             }
         }
 
+        //Image Handling
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -261,12 +247,12 @@ namespace DVLD.People
                     }
                 }
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Picture was not added !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-   
+
         private void llRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pbImage.ImageLocation = null;
@@ -276,7 +262,7 @@ namespace DVLD.People
         {
             if (_Person.ImagePath != pbImage.ImageLocation)
             {
-                if(!string.IsNullOrEmpty(_Person.ImagePath))
+                if (!string.IsNullOrEmpty(_Person.ImagePath))
                 {
                     try
                     {
@@ -289,11 +275,11 @@ namespace DVLD.People
                     }
                 }
             }
-            if(pbImage.ImageLocation!=null)
+            if (pbImage.ImageLocation != null)
             {
                 //then we copy the new image to the image folder after we rename it
                 string sourceImageFile = pbImage.ImageLocation.ToString();
-                if(Util.CopyImageToProjectImageFolder(ref sourceImageFile))
+                if (Util.CopyImageToProjectImageFolder(ref sourceImageFile))
                 {
                     pbImage.ImageLocation = sourceImageFile;
                     return true;
@@ -307,8 +293,15 @@ namespace DVLD.People
             return true;
 
         }
-    }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+            Close();
+        }
     }
+}
+
+    
 
 
