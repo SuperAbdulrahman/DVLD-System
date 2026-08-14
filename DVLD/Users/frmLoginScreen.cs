@@ -13,8 +13,7 @@ namespace DVLD.Users
 {
     public partial class frmLoginScreen : Form
     {
-        private User user;
-        private int _UserID;
+
         public frmLoginScreen()
         {
             InitializeComponent();
@@ -31,7 +30,7 @@ namespace DVLD.Users
                 return;
             }
 
-            user = User.Login(txtUsername.Text, txtPassword.Text);
+            User user = User.FindByUsernameAndPassword(txtUsername.Text, txtPassword.Text);
             if (user == null)
             {
                 MessageBox.Show("Invalid Username/Password", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,28 +41,38 @@ namespace DVLD.Users
                 MessageBox.Show("User is inactive ! Please Contact Your Admin", "User Inactive", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
+
+            if (cbRememberMe.Checked)
             {
-                _UserID = user.UserID;
-                if (cbRememberMe.Checked)
-                    _SaveCurrentSessionInfo(txtUsername.Text, txtPassword.Text);
-                else
-                    _RemoveCurrentSessionInfo();
-                this.Hide();
-
-                using (MainForm frm = new MainForm(_UserID))
-                {
-                    txtPassword.Text = string.Empty;
-                    txtUsername.Text = string.Empty;
-                    SessionInfo.currentUser = user;
-                    frm.ShowDialog();
-                }
-
-                // MainForm was closed.
-                // Therefore, user logged out.
-                _LoadCurrentSessionInfo();
-                this.Show(); ;
+                _SaveRememberedCredentials(txtUsername.Text, txtPassword.Text);
             }
+            else
+                _ClearRememberedCredentials();
+
+            SessionInfo.Login(user);
+
+            txtPassword.Text = string.Empty;
+            txtUsername.Text = string.Empty;
+
+            this.Hide();
+            using (MainForm frm = new MainForm())
+            {
+                frm.ShowDialog();
+                if(frm.IsLoggingOut)
+                {
+                    _LoadRememberedCredentials();
+                    this.Show();
+                }
+                else
+                    this.Close();   
+
+            }
+            
+
+            // MainForm was closed.
+            // Therefore, user logged out.
+            
+
         }
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
@@ -71,7 +80,6 @@ namespace DVLD.Users
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 errorProvider.SetError(txtUsername, "Username cannot be empty or white space!");
-                txtUsername.Focus();
                 e.Cancel = true;
             }
             else
@@ -82,8 +90,7 @@ namespace DVLD.Users
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                errorProvider.SetError(txtPassword, "Username cannot be empty or white space!");
-                txtPassword.Focus();
+                errorProvider.SetError(txtPassword, "Password cannot be empty or white space!");
                 e.Cancel = true;
             }
             else
@@ -92,32 +99,27 @@ namespace DVLD.Users
 
         private void frmLoginScreen_Load(object sender, EventArgs e)
         {
-            _LoadCurrentSessionInfo();
+            _LoadRememberedCredentials();
         }
-        private void _SaveCurrentSessionInfo(string username,string password)
+        private void _SaveRememberedCredentials(string username,string password)
         {
             Util.SaveLoginDataToSessionFile(username, password);
             //SessionInfo.currentUsername = username;
             //SessionInfo.currentPassword = password;
         }
-        private void _LoadCurrentSessionInfo()
+        private void _LoadRememberedCredentials()
         {
             string[] LoginInfo = Util.LoadLoginDataFromSessionFile();
             txtUsername.Text = LoginInfo[0];
             txtPassword.Text = LoginInfo[1];
-            //txtUsername.Text = SessionInfo.currentUsername;
+            //txtUsername.Text = SessionInfo.currentUsername;a
             //txtPassword.Text = SessionInfo.currentPassword;
         }
-        private void _RemoveCurrentSessionInfo()
+        private void _ClearRememberedCredentials()
         {
-            _SaveCurrentSessionInfo("","");
+            _SaveRememberedCredentials("","");
             //SessionInfo.currentUsername = string.Empty;
             //SessionInfo.currentPassword = string.Empty;
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)

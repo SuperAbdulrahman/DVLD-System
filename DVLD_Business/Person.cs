@@ -27,7 +27,7 @@ namespace DVLD_Business
         public string Phone { get; set; }
         public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }
-        public Country CountryInfo;
+        public Country CountryInfo { get; private set; }
 
         public Person()
         {

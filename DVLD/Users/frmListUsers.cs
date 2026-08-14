@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace DVLD.Users
 {
-    public partial class frmManageUsers : Form
+    public partial class frmListUsers : Form
     {
         private DataTable _dtAllUsers;
-        private DataTable _dtAllUsersGrid;
+  
 
-        public frmManageUsers()
+        public frmListUsers()
         {
             InitializeComponent();
         }
@@ -26,18 +26,16 @@ namespace DVLD.Users
         {
             _RefreshUsersList();
             cbFilterByOptions.SelectedIndex = 0;
-            cbIsActiveFilter.SelectedIndex = 0;
-            _UpdateRecordsCounter();
+           // cbIsActiveFilter.SelectedIndex = 0;
+            
         }
         private void _RefreshUsersList()
         {
             _dtAllUsers = User.GetAllUsers();
-            if (_dtAllUsers.Rows.Count > 0)
-            {
-                _dtAllUsersGrid = _dtAllUsers.DefaultView.ToTable(false,"UserID","PersonID", "FullName", "UserName","IsActive");
-                dgvUsersList.DataSource = _dtAllUsersGrid;
-                _FormatDataGridView();
-            }
+            dgvUsersList.DataSource = _dtAllUsers;
+            _FormatDataGridView();
+            _UpdateRecordsCounter();
+
         }
         private void _FormatDataGridView()
         {
@@ -45,31 +43,26 @@ namespace DVLD.Users
             {
                 dgvUsersList.Columns["UserID"].HeaderText = "User ID";
                 dgvUsersList.Columns["UserID"].Width = 90;
-                dgvUsersList.Columns["UserID"].ReadOnly = true;
 
                 dgvUsersList.Columns["PersonID"].HeaderText = "Person ID";
                 dgvUsersList.Columns["PersonID"].Width = 90;
-                dgvUsersList.Columns["PersonID"].ReadOnly = true;
 
                 dgvUsersList.Columns["FullName"].HeaderText = "Full Name";
                 dgvUsersList.Columns["FullName"].Width = 250;
-                dgvUsersList.Columns["FullName"].ReadOnly = true;
 
                 dgvUsersList.Columns["UserName"].HeaderText = "Username";
                 dgvUsersList.Columns["UserName"].Width = 120;
-                dgvUsersList.Columns["UserName"].ReadOnly = true;
 
                 dgvUsersList.Columns["IsActive"].HeaderText = "Is Active";
                 dgvUsersList.Columns["IsActive"].Width = 90;
-                dgvUsersList.Columns["IsActive"].ReadOnly = false;
             }
         }
 
         private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             txtbFilterSearchBar.Visible = true;
             txtbFilterSearchBar.Text = string.Empty;
+
             cbIsActiveFilter.Visible = false;
             cbIsActiveFilter.SelectedIndex = 0;
 
@@ -77,23 +70,14 @@ namespace DVLD.Users
             {
                 case "None":
                     txtbFilterSearchBar.Visible = false;
-                    cbIsActiveFilter.Visible = false;
                     break;
-                case "User ID":
-                    break;
-                case "Person ID":
-                    break;
-                case "Full Name":
-                    break;
-                case "Username":
-                    break;
+
                 case "Is Active":
                     cbIsActiveFilter.Visible = true;
                     txtbFilterSearchBar.Visible = false;
                     break;
-                default:
-                    break;
             }
+
             _ResetFilter();
         }
 
@@ -102,15 +86,15 @@ namespace DVLD.Users
 
             // Replaces ' with '' to safely escape the SQL syntax
             string safeFilter = filter.Replace("'", "''");
-            _dtAllUsersGrid.DefaultView.RowFilter = $"{field} LIKE '{safeFilter}%'";
+            _dtAllUsers.DefaultView.RowFilter = $"{field} LIKE '{safeFilter}%'";
 
         }
         private void _FilterInt(string field, int filter)
         {
-            _dtAllUsersGrid.DefaultView.RowFilter = $"{field} ={filter}";
+            _dtAllUsers.DefaultView.RowFilter = $"{field} ={filter}";
         }
-        private int _CountRecords() => _dtAllUsersGrid.DefaultView.Count;
-            //_dtAllUsersGrid.DefaultView.Count;
+        private int _CountRecords() => _dtAllUsers.DefaultView.Count;
+            //_dtAllUsers.DefaultView.Count;
 
         private void _UpdateRecordsCounter()
         {
@@ -156,7 +140,7 @@ namespace DVLD.Users
         }
         private void _ResetFilter()
         {
-            _dtAllUsersGrid.DefaultView.RowFilter = "";
+            _dtAllUsers.DefaultView.RowFilter = "";
             _UpdateRecordsCounter();
         }
 
@@ -191,25 +175,15 @@ namespace DVLD.Users
             _UpdateRecordsCounter() ;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int id = (int)dgvUsersList.CurrentRow.Cells[0].Value;
-            //if (!int.TryParse(dgvUsersList.CurrentRow.Cells["User ID"].Value.ToString(), out int userID))
-            //    return;
-
-            frmUserInfo frm = new frmUserInfo(id);
-            frm.ShowDialog();
-
-        }
         private void _DatabackEvent(object sender, int obj)
         {
             _RefreshUsersList();
-            _UpdateRecordsCounter();
+        }
+        private void showUserInfo(object sender,EventArgs e)
+        {
+            frmUserInfo frm = new frmUserInfo((int)dgvUsersList.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
         }
 
 
@@ -230,8 +204,8 @@ namespace DVLD.Users
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int userID = (int)dgvUsersList.CurrentRow.Cells[0].Value;
-            if (User.IsUserExist(userID))
-            {
+            //if (User.IsUserExist(userID))
+            //{
                 if (User.Delete(userID))
                 {
                     MessageBox.Show("User was deleted !", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -241,11 +215,11 @@ namespace DVLD.Users
                 {
                     MessageBox.Show("User was not deleted !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("User does not exist !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("User does not exist !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -260,14 +234,25 @@ namespace DVLD.Users
 
         private void ToolStripMenuItemChangePassword_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword();
+            int userID = (int)dgvUsersList.CurrentRow.Cells[0].Value;
+            frmChangePassword frm = new frmChangePassword(userID);
             frm.ShowDialog();
         }
 
-        // I am not sure if this is required but we will be able to edit info from the edit page
-        //private void dgvUsersList_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        //{
-        //   // if (dgvUsersList.SelectedRows.["Is Active"])
-        //}
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lblRecords_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRecordsCountValue_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

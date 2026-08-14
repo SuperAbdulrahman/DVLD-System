@@ -228,7 +228,7 @@
             this.manageDetainedLicensesToolStripMenuItem.Image = global::DVLD.Properties.Resources.Detain_512;
             this.manageDetainedLicensesToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.manageDetainedLicensesToolStripMenuItem.Name = "manageDetainedLicensesToolStripMenuItem";
-            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(313, 48);
+            this.manageDetainedLicensesToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.manageDetainedLicensesToolStripMenuItem.Text = "Manage Detained Licenses ";
             // 
             // detainLicenseToolStripMenuItem
@@ -236,7 +236,7 @@
             this.detainLicenseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.2F, System.Drawing.FontStyle.Bold);
             this.detainLicenseToolStripMenuItem.Image = global::DVLD.Properties.Resources.Detain_512;
             this.detainLicenseToolStripMenuItem.Name = "detainLicenseToolStripMenuItem";
-            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(313, 48);
+            this.detainLicenseToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.detainLicenseToolStripMenuItem.Text = "Detain License";
             // 
             // releaToolStripMenuItem
@@ -244,7 +244,7 @@
             this.releaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.2F, System.Drawing.FontStyle.Bold);
             this.releaToolStripMenuItem.Image = global::DVLD.Properties.Resources.Release_Detained_License_512;
             this.releaToolStripMenuItem.Name = "releaToolStripMenuItem";
-            this.releaToolStripMenuItem.Size = new System.Drawing.Size(313, 48);
+            this.releaToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.releaToolStripMenuItem.Text = "Release Detained License";
             // 
             // manageApplicationTypesToolStripMenuItem
@@ -254,6 +254,7 @@
             this.manageApplicationTypesToolStripMenuItem.Name = "manageApplicationTypesToolStripMenuItem";
             this.manageApplicationTypesToolStripMenuItem.Size = new System.Drawing.Size(374, 70);
             this.manageApplicationTypesToolStripMenuItem.Text = "Manage Application Types ";
+            this.manageApplicationTypesToolStripMenuItem.Click += new System.EventHandler(this.manageApplicationTypesToolStripMenuItem_Click);
             // 
             // manageTestTypesToolStripMenuItem
             // 
@@ -262,6 +263,7 @@
             this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
             this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(374, 70);
             this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
+            this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
             // 
             // toolStripDropDownPeople
             // 

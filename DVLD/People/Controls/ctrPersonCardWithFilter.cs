@@ -70,13 +70,24 @@ namespace DVLD.People
         {
             if (Mode == enFindMode.PersonID)
             {
-                if (int.TryParse(txtFindValue.Text, out int value))
-                    ctrlPersonCard2.LoadPersonInfo(value);
-                else
-                    MessageBox.Show("Please Enter a number ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!int.TryParse(txtFindValue.Text, out int personID))
+                {
+                    MessageBox.Show(
+                        "Please enter a valid person ID.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                ctrlPersonCard2.LoadPersonInfo(personID);
             }
             else
+            {
                 ctrlPersonCard2.LoadPersonInfo(txtFindValue.Text);
+            }
+
             if (FilterEnabled)
             {
                 PersonSelected(ctrlPersonCard2.PersonID);
@@ -110,6 +121,7 @@ namespace DVLD.People
             cbFilterType.SelectedIndex = (int)enFindMode.PersonID;
             txtFindValue.Text = PersonID.ToString();
             ctrlPersonCard2.LoadPersonInfo(PersonID);
+            OnPersonSelected(PersonID);
         }
 
         public void LoadPersonInfo(int PersonID)

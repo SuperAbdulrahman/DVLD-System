@@ -77,6 +77,73 @@ namespace DVLD_DataAccess
             }
             return isFound;
         }
+        public static bool GetUserByUsernameAndPassword( ref int userID, ref int personID, ref string userName,  string password, ref bool isActive)
+        {
+            bool isFound = false;
+
+            // WHY: We leave UserName alone (Case-Insensitive for UX). 
+            // We force Password to be Case-Sensitive (CS_AS) for strict security.
+            string query = @"SELECT * FROM Users 
+                     WHERE UserName = @UserName 
+                     AND Password COLLATE Latin1_General_CS_AS = @Password;";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserName", userName);
+                    command.Parameters.AddWithValue("@Password", password);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            userID = reader["UserID"] is DBNull ? 0 : (int)reader["UserID"];
+                            personID = reader["PersonID"] is DBNull ? 0 : (int)reader["PersonID"];
+                            isActive = reader["IsActive"] is DBNull ? false : (bool)reader["IsActive"];
+                            isFound = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // log an error
+            }
+            return isFound;
+        }
+        public static bool GetUserByPersonID(int personID, ref int userID, ref string userName, ref string password, ref bool isActive)
+        {
+            bool isFound = false;
+            string query = @"SELECT * FROM Users WHERE PersonID = @PersonID;";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", personID);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            userID = reader["UserID"] is DBNull ? 0 : (int)reader["UserID"];
+                            userName = reader["UserName"] is DBNull ? string.Empty : (string)reader["UserName"];
+                            password = reader["Password"] is DBNull ? string.Empty : (string)reader["Password"];
+                            isActive = reader["IsActive"] is DBNull ? false : (bool)reader["IsActive"];
+                            isFound = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+            return isFound;
+        }
         public static bool Delete(int userID)
         {
             int rowsAffected = 0;
@@ -210,6 +277,28 @@ namespace DVLD_DataAccess
             return IsFound;
 
         }
+        public static bool IsUserExistForPersonID(int personID)
+        {
+            bool isFound = false;
+            // WHY: We just select 1. We don't need the data, we just need to know if ANY row exists.
+            string query = @"SELECT 1 FROM Users WHERE PersonID = @PersonID;";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", personID);
+                    connection.Open();
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                        isFound = true;
+                }
+            }
+            catch (Exception) { }
+            return isFound;
+        }
         public static DataTable GetUsers()
         {
             DataTable dt = new DataTable();
@@ -222,7 +311,6 @@ namespace DVLD_DataAccess
                     connection.Open();
                     using(SqlDataReader reader = command.ExecuteReader())
                     {
-                        if(reader.Read())
                             dt.Load(reader);
                     }
                 }

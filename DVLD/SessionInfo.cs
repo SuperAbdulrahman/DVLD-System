@@ -9,9 +9,16 @@ namespace DVLD
 {
     public static class SessionInfo
     {
-        public static string currentUsername = string.Empty;
-        public static string currentPassword = string.Empty;
-        public static User currentUser;
+        public static User currentUser { get; private set; }
+        public static void Login(User user)
+        {
+            currentUser = user;
+        }
+
+        public static void Logout()
+        {
+            currentUser = null;
+        }
 
     }
 }

@@ -156,12 +156,12 @@ namespace DVLD.People
                 e.Cancel = true;
                 return;
             }
-            if (!_ValidateNationalNo())
+            if ((textBox==txtNationalNo)&&!_ValidateNationalNo())
             {
                 e.Cancel = true;
                 return;
             }
-            if (!_ValidateEmail())
+            if ((textBox==txtEmail)&&!_ValidateEmail())
             {
                 e.Cancel = true;
                 return;

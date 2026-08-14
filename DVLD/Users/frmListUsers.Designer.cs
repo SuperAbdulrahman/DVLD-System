@@ -1,6 +1,6 @@
 ﻿namespace DVLD.Users
 {
-    partial class frmManageUsers
+    partial class frmListUsers
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.lblFilterBy = new System.Windows.Forms.Label();
             this.dgvUsersList = new System.Windows.Forms.DataGridView();
             this.cbFilterByOptions = new System.Windows.Forms.ComboBox();
@@ -44,27 +43,17 @@
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phoneCallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddNewUser = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pbManagePeopleICon = new System.Windows.Forms.PictureBox();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersList)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeopleICon)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblTitle.Location = new System.Drawing.Point(313, 177);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(279, 54);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Manage Users";
             // 
             // lblFilterBy
             // 
@@ -90,6 +79,7 @@
             this.dgvUsersList.RowTemplate.Height = 26;
             this.dgvUsersList.Size = new System.Drawing.Size(907, 293);
             this.dgvUsersList.TabIndex = 8;
+            this.dgvUsersList.DoubleClick += new System.EventHandler(this.showUserInfo);
             // 
             // cbFilterByOptions
             // 
@@ -121,6 +111,7 @@
             this.lblRecordsCountValue.Size = new System.Drawing.Size(23, 28);
             this.lblRecordsCountValue.TabIndex = 15;
             this.lblRecordsCountValue.Text = "0";
+            this.lblRecordsCountValue.Click += new System.EventHandler(this.lblRecordsCountValue_Click);
             // 
             // lblRecords
             // 
@@ -131,6 +122,7 @@
             this.lblRecords.Size = new System.Drawing.Size(106, 28);
             this.lblRecords.TabIndex = 14;
             this.lblRecords.Text = "#Records: ";
+            this.lblRecords.Click += new System.EventHandler(this.lblRecords_Click);
             // 
             // txtbFilterSearchBar
             // 
@@ -173,17 +165,17 @@
             this.sendEmailToolStripMenuItem,
             this.phoneCallToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 366);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 338);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(231, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(231, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(210, 6);
             // 
             // btnClose
             // 
@@ -207,9 +199,9 @@
             this.showDetailsToolStripMenuItem.Image = global::DVLD.Properties.Resources.PersonDetails_32;
             this.showDetailsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showUserInfo);
             // 
             // addNewUserToolStripMenuItem
             // 
@@ -217,7 +209,7 @@
             this.addNewUserToolStripMenuItem.Image = global::DVLD.Properties.Resources.Add_Person_40;
             this.addNewUserToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.addNewUserToolStripMenuItem.Name = "addNewUserToolStripMenuItem";
-            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
             this.addNewUserToolStripMenuItem.Text = "Add New User";
             this.addNewUserToolStripMenuItem.Click += new System.EventHandler(this.AddNewUser);
             // 
@@ -227,9 +219,19 @@
             this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.edit_32;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem1.Image = global::DVLD.Properties.Resources.Delete_32;
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(213, 46);
+            this.toolStripMenuItem1.Text = "Delete";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemChangePassword
             // 
@@ -237,7 +239,7 @@
             this.ToolStripMenuItemChangePassword.Image = global::DVLD.Properties.Resources.Password_32;
             this.ToolStripMenuItemChangePassword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.ToolStripMenuItemChangePassword.Name = "ToolStripMenuItemChangePassword";
-            this.ToolStripMenuItemChangePassword.Size = new System.Drawing.Size(234, 46);
+            this.ToolStripMenuItemChangePassword.Size = new System.Drawing.Size(213, 46);
             this.ToolStripMenuItemChangePassword.Text = "Change Password";
             this.ToolStripMenuItemChangePassword.Click += new System.EventHandler(this.ToolStripMenuItemChangePassword_Click);
             // 
@@ -247,7 +249,7 @@
             this.sendEmailToolStripMenuItem.Image = global::DVLD.Properties.Resources.send_email_32;
             this.sendEmailToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
             this.sendEmailToolStripMenuItem.Text = "Send Email";
             this.sendEmailToolStripMenuItem.Click += new System.EventHandler(this.sendEmailToolStripMenuItem_Click);
             // 
@@ -257,7 +259,7 @@
             this.phoneCallToolStripMenuItem.Image = global::DVLD.Properties.Resources.call_32;
             this.phoneCallToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
-            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
             this.phoneCallToolStripMenuItem.Text = "Phone Call";
             this.phoneCallToolStripMenuItem.Click += new System.EventHandler(this.phoneCallToolStripMenuItem_Click);
             // 
@@ -274,6 +276,17 @@
             this.btnAddNewUser.UseVisualStyleBackColor = true;
             this.btnAddNewUser.Click += new System.EventHandler(this.AddNewUser);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblTitle.Location = new System.Drawing.Point(313, 177);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(279, 54);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Manage Users";
+            // 
             // pbManagePeopleICon
             // 
             this.pbManagePeopleICon.Image = global::DVLD.Properties.Resources.Users_2_400;
@@ -284,17 +297,7 @@
             this.pbManagePeopleICon.TabIndex = 2;
             this.pbManagePeopleICon.TabStop = false;
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItem1.Image = global::DVLD.Properties.Resources.Delete_32;
-            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(234, 46);
-            this.toolStripMenuItem1.Text = "Delete";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // frmManageUsers
+            // frmListUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -313,7 +316,7 @@
             this.Controls.Add(this.lblFilterBy);
             this.Controls.Add(this.pbManagePeopleICon);
             this.Controls.Add(this.lblTitle);
-            this.Name = "frmManageUsers";
+            this.Name = "frmListUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Users";
             this.Load += new System.EventHandler(this.frmManageUsers_Load);
@@ -326,9 +329,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.PictureBox pbManagePeopleICon;
         private System.Windows.Forms.Label lblFilterBy;
         private System.Windows.Forms.DataGridView dgvUsersList;
         private System.Windows.Forms.Button btnClose;
@@ -348,5 +348,7 @@
         private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem phoneCallToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.PictureBox pbManagePeopleICon;
     }
 }

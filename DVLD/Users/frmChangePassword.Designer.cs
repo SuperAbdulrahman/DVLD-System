@@ -185,10 +185,10 @@
             // 
             // frmChangePassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1079, 785);
+            this.ClientSize = new System.Drawing.Size(1063, 785);
             this.Controls.Add(this.ctrlUserInformation1);
             this.Controls.Add(this.txtCurrentPassword);
             this.Controls.Add(this.txtNewPassword);

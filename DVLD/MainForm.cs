@@ -1,4 +1,6 @@
-﻿using DVLD.Users;
+﻿using DVLD.ApplicationTypes;
+using DVLD.Tests.TestsTypes;
+using DVLD.Users;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -16,16 +18,10 @@ namespace DVLD
 
     public partial class MainForm : Form
     {
-        private User user;
-        private int _UserID;
+        public bool IsLoggingOut { get; private set; }
         public MainForm()
         {
             InitializeComponent();
-        }
-        public MainForm(int userID)
-        {
-            InitializeComponent();
-            _UserID = userID;
         }
 
         private void toolStripDropDownPeople_Click(object sender, EventArgs e)
@@ -34,11 +30,7 @@ namespace DVLD
             frm.ShowDialog();
         }
 
-        private void btnTests_Click(object sender, EventArgs e)
-        {
-            frmLoginScreen frm = new frmLoginScreen();
-            frm.ShowDialog();
-        }
+
 
         private void currentUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -48,21 +40,32 @@ namespace DVLD
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            //frmLoginScreen frm = new frmLoginScreen();
-            //frm.ShowDialog();
+            IsLoggingOut =true;
+            SessionInfo.Logout();
             this.Close();
         }
 
         private void toolStripDropDownUsers_Click(object sender, EventArgs e)
         {
-            frmManageUsers frm = new frmManageUsers();
+            frmListUsers frm = new frmListUsers();
             frm.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
+        }
+
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageApplicationTypes frm = new frmManageApplicationTypes();
+            frm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageTestTypes frm = new frmManageTestTypes();
             frm.ShowDialog();
         }
     }

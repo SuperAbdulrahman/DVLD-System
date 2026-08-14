@@ -119,8 +119,8 @@
             // 
             // ctrlLoginInfoCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.groupBox1);
             this.Name = "ctrlLoginInfoCard";
             this.Size = new System.Drawing.Size(1028, 150);

@@ -24,5 +24,10 @@ namespace DVLD.People
             DataBack?.Invoke(this,ctrPersonCardWithFilter1.PersonID);
             this.Close();
         }
+
+        private void ctrPersonCardWithFilter1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

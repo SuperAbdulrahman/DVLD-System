@@ -14,7 +14,6 @@ namespace DVLD.Users
     public partial class frmUserInfo : Form
     {
         private int _UserID;
-        private User _User;
         public frmUserInfo(int userID)
         {
             InitializeComponent();

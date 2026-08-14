@@ -14,11 +14,31 @@ namespace DVLD.Users
 {
     public partial class frmChangePassword : Form
     {
+        int _UserID;
         public frmChangePassword()
         {
             InitializeComponent();
+            _UserID= SessionInfo.currentUser.UserID;
+        }
+        public frmChangePassword(int userID)
+        {
+            InitializeComponent();
+            _UserID = userID;
         }
 
+        private void frmChangePassword_Load(object sender, EventArgs e)
+        {
+            _ResetDefualtValues();
+            ctrlUserInformation1.LoadUserInfoCard(_UserID);
+        }
+        private void _ResetDefualtValues()
+        {
+            txtCurrentPassword.Text = string.Empty;
+            txtNewPassword.Text = string.Empty;
+            txtConfirmPassword.Text = string.Empty;
+        }
+
+        // Validation events
         private void Validating_textBoxes(object sender, CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -28,7 +48,7 @@ namespace DVLD.Users
                 e.Cancel = true;
                 return;
             }
-            if(!_ValidateCurrentPassword())
+            if (textBox ==txtCurrentPassword  && !_ValidateCurrentPassword())
             {
                 e.Cancel = true;
                 return;
@@ -39,7 +59,6 @@ namespace DVLD.Users
                 return;
             }
         }
-
         private bool _ValidateConfirmPassword()
         {
             if (txtNewPassword.Text != txtConfirmPassword.Text)
@@ -62,7 +81,7 @@ namespace DVLD.Users
         }
         private bool _ValidateCurrentPassword()
         {
-            if(txtCurrentPassword.Text != SessionInfo.currentUser.Password)
+            if (txtCurrentPassword.Text != SessionInfo.currentUser.Password)
             {
                 errorProvider1.SetError(txtCurrentPassword, "Current Password does not match !!");
                 return false;
@@ -73,11 +92,7 @@ namespace DVLD.Users
 
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        // buttons :
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
@@ -88,21 +103,19 @@ namespace DVLD.Users
 
             if (MessageBox.Show("Are you sure you want to change password?", "Confirm changes", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
+                SessionInfo.currentUser.Password = txtNewPassword.Text;
                 if (SessionInfo.currentUser.Save())
                 {
                     MessageBox.Show("Password changed Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtCurrentPassword.Text = string.Empty;
-                    txtNewPassword.Text     = string.Empty;
-                    txtConfirmPassword.Text = string.Empty;
+                    _ResetDefualtValues();
                 }
                 else
                     MessageBox.Show("An error occured ,Password was not changed!", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void frmChangePassword_Load(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            ctrlUserInformation1.LoadUserInfoCard(SessionInfo.currentUser.UserID);
+            this.Close();
         }
     }
 }

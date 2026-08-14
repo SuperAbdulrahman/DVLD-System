@@ -8,34 +8,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+
 
 namespace DVLD.Users
 {
     public partial class frmAddEditUser : Form
     {
-        public delegate void DataBackEventHandler(object sender, int PersonID);
+        public delegate void DataBackEventHandler(object sender, int UserID);
         public event DataBackEventHandler DataBack;
 
-        private int _UserID;
+        private int _UserID = -1;
         private User _User;
         enum enMode { AddNew = 0, Edit = 1 }
-        enMode Mode;
+        private enMode _Mode;
         private bool _canGoToLoginInfo = false;
         public frmAddEditUser()
         {
             InitializeComponent();
-            Mode= enMode.AddNew;
+            _Mode= enMode.AddNew;
         }
         public frmAddEditUser(int userID)
         {
             InitializeComponent();
-            Mode=enMode.Edit;
+            _Mode=enMode.Edit;
             _UserID = userID;
         }
         private void _LoadUserInfo()
         {
-            switch (Mode)
+            switch (_Mode)
             {
                 case enMode.AddNew:
                     lblTitle.Text = "Add New User";
@@ -49,7 +49,8 @@ namespace DVLD.Users
 
                     if (_User == null)
                     {
-                        MessageBox.Show("Something went wrong!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("User not found", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
                         return;
                     }
             
@@ -73,14 +74,36 @@ namespace DVLD.Users
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(ctrPersonCardWithFilter1.PersonID<=0)
+            int personID = ctrPersonCardWithFilter1.PersonID;
+
+            if (personID <= 0)
             {
-                MessageBox.Show("Add User First!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Please select a person first.",
+                    "Person Required",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
                 return;
             }
-          
+
+            if (_Mode == enMode.AddNew)
+            {
+                if (User.IsUserExistForPersonID(personID))
+                {
+                    MessageBox.Show(
+                        "User exists for this person, please choose another one.",
+                        "User Already Exists",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                _User = new User(personID);
+            }
+
             tabControl1.SelectedTab = tpLoginInfo;
-       
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -96,11 +119,11 @@ namespace DVLD.Users
         private void ctrPersonCardWithFilter1_OnPersonSelected(int obj)
         {
             _canGoToLoginInfo = true;
-            if (Mode == enMode.AddNew)
-            {
-                _User = new User(ctrPersonCardWithFilter1.PersonID);
-            }
-            btnSave.Enabled = true;
+            //if (_Mode == enMode.AddNew)
+            //{
+            //    _User = new User(ctrPersonCardWithFilter1.PersonID);
+            //}
+            //btnSave.Enabled = true;
         }
 
       
@@ -109,6 +132,11 @@ namespace DVLD.Users
             TextBox textBox = (TextBox)sender;
             
             if (!_ValidationRequired(textBox))
+            {
+                e.Cancel = true;
+                return;
+            }
+            if(textBox==txtUsername && !_ValidateUsernameUniqueness())
             {
                 e.Cancel = true;
                 return;
@@ -140,6 +168,37 @@ namespace DVLD.Users
             errorProvider1.SetError(textBox, "");
             return true;
         }
+        private bool _ValidateUsernameUniqueness()
+        {
+            string username = txtUsername.Text.Trim();
+
+            if (_Mode == enMode.AddNew)
+            {
+                if (User.IsUserExist(username))
+                {
+                    errorProvider1.SetError(
+                        txtUsername,
+                        "Username is used by another user.");
+
+                    return false;
+                }
+            }
+            else
+            {
+                if (_User.UserName != username &&
+                    User.IsUserExist(username))
+                {
+                    errorProvider1.SetError(
+                        txtUsername,
+                        "Username is used by another user.");
+
+                    return false;
+                }
+            }
+
+            errorProvider1.SetError(txtUsername, "");
+            return true;
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -148,8 +207,9 @@ namespace DVLD.Users
                 MessageBox.Show("Please Fill Required Fields", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             //Fill user Info
-            _User.UserName = txtUsername.Text;
+            _User.UserName = txtUsername.Text.Trim();
             _User.Password = txtPassword.Text;
             _User.IsActive = cbIsActive.Checked;
 
@@ -158,10 +218,15 @@ namespace DVLD.Users
                 if (_User.Save())
                 {
                     MessageBox.Show("Changed Applied Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Mode = (Mode == enMode.AddNew) ? enMode.Edit:enMode.Edit;
+                    if (_Mode == enMode.AddNew)
+                    {
+                        _Mode = enMode.Edit;
+                    }
                     _UserID = _User.UserID;
                     DataBack?.Invoke(this,_UserID);
                     _LoadUserInfo();
+
+ 
                 }
                 else
                     MessageBox.Show("An error occured , changes didn't apply", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);

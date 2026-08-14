@@ -149,12 +149,13 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(514, 34);
             this.txtPassword.TabIndex = 2;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // cbRememberMe
             // 
             this.cbRememberMe.AutoSize = true;
+            this.cbRememberMe.Checked = true;
+            this.cbRememberMe.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbRememberMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbRememberMe.Font = new System.Drawing.Font("Segoe UI Semibold", 12.8F, System.Drawing.FontStyle.Bold);
             this.cbRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(56)))));
@@ -173,9 +174,9 @@
             this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold);
-            this.btnLogin.Location = new System.Drawing.Point(526, 488);
+            this.btnLogin.Location = new System.Drawing.Point(526, 508);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(387, 71);
+            this.btnLogin.Size = new System.Drawing.Size(367, 57);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;

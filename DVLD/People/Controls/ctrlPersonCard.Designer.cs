@@ -414,7 +414,8 @@
             // 
             // ctrlPersonCard
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.gbPersonInfo);
             this.Name = "ctrlPersonCard";
             this.Size = new System.Drawing.Size(1058, 340);

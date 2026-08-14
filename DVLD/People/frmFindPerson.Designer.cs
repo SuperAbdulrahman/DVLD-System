@@ -70,6 +70,7 @@
             this.ctrPersonCardWithFilter1.ShowAddPerson = true;
             this.ctrPersonCardWithFilter1.Size = new System.Drawing.Size(1069, 506);
             this.ctrPersonCardWithFilter1.TabIndex = 0;
+            this.ctrPersonCardWithFilter1.Load += new System.EventHandler(this.ctrPersonCardWithFilter1_Load);
             // 
             // frmFindPerson
             // 

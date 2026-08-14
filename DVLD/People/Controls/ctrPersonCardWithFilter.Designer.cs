@@ -130,7 +130,8 @@
             // 
             // ctrPersonCardWithFilter
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.ctrlPersonCard2);
             this.Controls.Add(this.gbFilter);

@@ -57,8 +57,8 @@
             // 
             // frmUserInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1085, 544);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ctrlUserInformation1);

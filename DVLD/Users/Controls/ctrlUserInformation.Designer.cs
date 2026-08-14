@@ -28,16 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlLoginInfoCard1 = new DVLD.Users.ctrlLoginInfoCard();
             this.ctrlPersonCard1 = new DVLD.ctrlPersonCard();
+            this.ctrlLoginInfoCard1 = new DVLD.Users.ctrlLoginInfoCard();
             this.SuspendLayout();
-            // 
-            // ctrlLoginInfoCard1
-            // 
-            this.ctrlLoginInfoCard1.Location = new System.Drawing.Point(15, 334);
-            this.ctrlLoginInfoCard1.Name = "ctrlLoginInfoCard1";
-            this.ctrlLoginInfoCard1.Size = new System.Drawing.Size(1027, 150);
-            this.ctrlLoginInfoCard1.TabIndex = 1;
             // 
             // ctrlPersonCard1
             // 
@@ -46,10 +39,17 @@
             this.ctrlPersonCard1.Size = new System.Drawing.Size(1058, 340);
             this.ctrlPersonCard1.TabIndex = 2;
             // 
+            // ctrlLoginInfoCard1
+            // 
+            this.ctrlLoginInfoCard1.Location = new System.Drawing.Point(15, 334);
+            this.ctrlLoginInfoCard1.Name = "ctrlLoginInfoCard1";
+            this.ctrlLoginInfoCard1.Size = new System.Drawing.Size(1027, 150);
+            this.ctrlLoginInfoCard1.TabIndex = 1;
+            // 
             // ctrlUserInformation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.ctrlLoginInfoCard1);
             this.Name = "ctrlUserInformation";

@@ -289,7 +289,7 @@ namespace DVLD_ConsoleTest
         }
         public static void Login(string username, string password)
         {
-            User user = User.Login(username, password);
+            User user = User.FindByUsernameAndPassword(username, password);
             if(user!=null)
             {
                 Console.WriteLine("User logged in successfullly!");
@@ -297,6 +297,54 @@ namespace DVLD_ConsoleTest
             else
                 Console.WriteLine("User was not logged in , either password or name not correct");
         }
+        //static void TestFindApplicationType()
+        //{
+        //    ApplicationType applicationType = ApplicationType.Find(1);
+
+        //    if (applicationType != null)
+        //    {
+        //        Console.WriteLine("Application Type Found!");
+        //        Console.WriteLine("ID: " + applicationType.ApplicationID);
+        //        Console.WriteLine("Title: " + applicationType.ApplicationTypeTitle);
+        //        Console.WriteLine("Fees: " + applicationType.ApplicationFees);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Application Type Not Found.");
+        //    }
+        //}
+        //static void TestGetApplicationTypes()
+        //{
+        //    DataTable dt = ApplicationType.GetApplicationTypes();
+
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        Console.WriteLine("ID: " + row["ApplicationTypeID"]);
+        //        Console.WriteLine("Title: " + row["ApplicationTypeTitle"]);
+        //        Console.WriteLine("Fees: " + row["ApplicationFees"]);
+        //        Console.WriteLine("----------------------");
+        //    }
+        //}
+        //static void TestEditApplicationType()
+        //{
+        //    ApplicationType applicationType = ApplicationType.Find(1);
+
+        //    if (applicationType != null)
+        //    {
+        //        applicationType.ApplicationTypeTitle = "New Local Driving License Service";
+        //        //New Local Driving License Service
+        //        applicationType.ApplicationFees = 15.00m;
+
+        //        if (applicationType.EditApplicationType())
+        //            Console.WriteLine("Updated Successfully!");
+        //        else
+        //            Console.WriteLine("Update Failed!");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Application Type Not Found.");
+        //    }
+        //}
         static void Main(string[] args)
          {
 
@@ -319,10 +367,15 @@ namespace DVLD_ConsoleTest
             // DeleteUser(19);
             // GetAllUsers();
             // Login("useR4","1234");
-            //Util.SaveLoginDataToSessionFile("Ahmed","55");
-            string[] arr = Util.LoadLoginDataFromSessionFile();
-            Console.WriteLine(arr[0]+" , " + arr[1]);
+            ////Util.SaveLoginDataToSessionFile("Ahmed","55");
+            //string[] arr = Util.LoadLoginDataFromSessionFile();
+            //Console.WriteLine(arr[0]+" , " + arr[1]);
 
-          }
+           // TestFindApplicationType();
+          // TestGetApplicationTypes();
+         // TestEditApplicationType();
+          ///  TestGetApplicationTypes();
+
+        }
     }
 }

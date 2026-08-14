@@ -13,11 +13,11 @@ namespace DVLD.Users.Controls
 {
     public partial class ctrlUserInformation : UserControl
     {
-        private User _User;
+
         private int _UserID;
 
         public int UserID { get { return _UserID; } }
-        public User UserInfo { get { return _User; } }
+
 
         public ctrlUserInformation()
         {
@@ -26,12 +26,15 @@ namespace DVLD.Users.Controls
         public void LoadUserInfoCard(int userID)
         {
             ctrlLoginInfoCard1.LoadUserLogginInfo(userID);
-            _User = ctrlLoginInfoCard1.UserInfo;
-            if ( _User== null)
+
+            if (ctrlLoginInfoCard1.PersonID <= 0)
             {
                 return;
             }
-            ctrlPersonCard1.LoadPersonInfo(_User.PersonID);
+
+            ctrlPersonCard1.LoadPersonInfo(ctrlLoginInfoCard1.PersonID);
         }
+
+
     }
 }
