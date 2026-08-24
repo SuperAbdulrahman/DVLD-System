@@ -25,16 +25,10 @@ namespace DVLD.Users.Controls
         }
         public void LoadUserInfoCard(int userID)
         {
-            ctrlLoginInfoCard1.LoadUserLogginInfo(userID);
-
-            if (ctrlLoginInfoCard1.PersonID <= 0)
-            {
+            if (!ctrlLoginInfoCard1.LoadUserLogginInfo(userID))
                 return;
-            }
 
             ctrlPersonCard1.LoadPersonInfo(ctrlLoginInfoCard1.PersonID);
         }
-
-
     }
 }

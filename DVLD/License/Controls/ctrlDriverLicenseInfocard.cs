@@ -22,7 +22,7 @@ namespace DVLD.License.Controls
             InitializeComponent();
         }
 
-        public void LoadDriverLicenseInfoByLicenseID(int LicenseID)
+        public bool LoadDriverLicenseInfoByLicenseID(int LicenseID)
         {
             _LicenseID = LicenseID;
             _License = DVLD_Business.License.FindByLicenseID(_LicenseID);
@@ -31,11 +31,12 @@ namespace DVLD.License.Controls
             {
                 ResetDriverLicenseCardInfo();
                 MessageBox.Show("No License Found with LicenseID = " + _LicenseID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
             _FillDriverLicenseCardInfo();
+            return true;
         }
-        public void LoadDriverLicenseInfoByAppID(int AppID)
+        public bool LoadDriverLicenseInfoByAppID(int AppID)
         {
             
             _License = DVLD_Business.License.FindByApplicationID(AppID);
@@ -44,9 +45,10 @@ namespace DVLD.License.Controls
             {
                 ResetDriverLicenseCardInfo();
                 MessageBox.Show("No License Found for Application with ID = " + AppID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
             _FillDriverLicenseCardInfo();
+            return true;
         }
         private void ResetDriverLicenseCardInfo()
         {

@@ -169,12 +169,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionInfo.cs" />
-    <Compile Include="Tests\Controls\ctlScheduledTest.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Tests\Controls\ctlScheduledTest.Designer.cs">
-      <DependentUpon>ctlScheduledTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tests\Controls\ctrlScheduleTest.cs">
       <SubType>UserControl</SubType>
     </Compile>

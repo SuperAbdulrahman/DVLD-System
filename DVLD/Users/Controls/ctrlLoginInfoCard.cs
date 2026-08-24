@@ -28,18 +28,20 @@
                 InitializeComponent();
             }
 
-            public void LoadUserLogginInfo(int userID)
+        public bool LoadUserLogginInfo(int userID)
+        {
+            _User = User.Find(userID);
+            if (_User == null)
             {
-                _User = User.Find(userID);
-                if( _User == null )
-                {
-                    _ResetUserInfoCard();
-                    MessageBox.Show("No User with User ID  = " + userID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                _UserID = _User.UserID;
-                _FillUserCardInfo();
+                _ResetUserInfoCard();
+                MessageBox.Show("No User with User ID  = " + userID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+            _UserID = _User.UserID;
+            _FillUserCardInfo();
+            return true;
+        }
+
 
             private void _FillUserCardInfo()
             {
