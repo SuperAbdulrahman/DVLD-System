@@ -41,11 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDataAccess.cs" />
     <Compile Include="ApplicationTypesDataAccess.cs" />
     <Compile Include="CountryDataAccess.cs" />
     <Compile Include="DataAccessSettings.cs" />
+    <Compile Include="DetainedLicenseDataAccess.cs" />
+    <Compile Include="DriverDataAccess.cs" />
+    <Compile Include="InternationalLicenseDataAccess.cs" />
+    <Compile Include="LicenseClassDataAccess.cs" />
+    <Compile Include="LicenseDataAccess.cs" />
+    <Compile Include="LocalDrivingLicenseApplicationsDataAccess.cs" />
     <Compile Include="PersonDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestAppointmentDataAccess.cs" />
+    <Compile Include="TestDataAccess.cs" />
     <Compile Include="TestTypeDataAccess.cs" />
     <Compile Include="UserDataAccess.cs" />
   </ItemGroup>

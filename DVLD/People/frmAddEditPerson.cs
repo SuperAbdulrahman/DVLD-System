@@ -179,8 +179,13 @@ namespace DVLD.People
         }
         private bool _ValidateNationalNo()
         {
-            if (Person.IsPersonExist(txtNationalNo.Text))
+            if(Mode==enMode.Edit)
             {
+                if (_Person.NationalNo == txtNationalNo.Text)
+                    return true;
+            }
+            if (Person.IsPersonExist(txtNationalNo.Text))
+            {   
                 errorProvider.SetError(txtNationalNo, "National Number already exist, please enter another one");
                 return false;
             }
@@ -275,7 +280,7 @@ namespace DVLD.People
                     }
                 }
             }
-            if (pbImage.ImageLocation != null)
+            if (!string.IsNullOrEmpty(pbImage.ImageLocation))
             {
                 //then we copy the new image to the image folder after we rename it
                 string sourceImageFile = pbImage.ImageLocation.ToString();

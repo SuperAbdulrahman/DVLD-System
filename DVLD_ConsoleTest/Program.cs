@@ -345,6 +345,48 @@ namespace DVLD_ConsoleTest
         //        Console.WriteLine("Application Type Not Found.");
         //    }
         //}
+        //static void TestFindApplication(int ID)
+        //{
+        //    Application application = new Application().Find(ID);
+
+        //    if (application != null)
+        //    {
+        //        Console.WriteLine("Application Found!");
+        //        Console.WriteLine("ID: " + application.ID);
+        //        Console.WriteLine("Applicant Person ID: " + application.ApplicantPersonID);
+        //        Console.WriteLine("Application Date: " + application.ApplicationDate);
+        //        Console.WriteLine("Application Type ID: " + application.ApplicationTypeID);
+        //        Console.WriteLine("Status: " + application.Status);
+        //        Console.WriteLine("Last Status Date: " + application.LastStatusDate);
+        //        Console.WriteLine("Paid Fees: " + application.PaidFees);
+        //        Console.WriteLine("Created By User ID: " + application.CreatedByUserID);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Application Not Found.");
+        //    }
+        //}
+        static void TestFindLocalDrivingLicenseApplication(int id)
+        {
+            var app = LocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationByLocalAppID(id);
+
+            if (app == null)
+            {
+                Console.WriteLine("Application not found.");
+                return;
+            }
+
+            Console.WriteLine($"Local Driving License ID: {app.LocalDirivingLicenseID}");
+            Console.WriteLine($"Application ID: {app.ApplicationID}");
+            Console.WriteLine($"Person ID: {app.ApplicantPersonID}");
+            Console.WriteLine($"License Class ID: {app.LicenseClassID}");
+            Console.WriteLine($"Application Date: {app.ApplicationDate}");
+            Console.WriteLine($"Application Type ID: {app.ApplicationTypeID}");
+            Console.WriteLine($"Status: {app.Status}");
+            Console.WriteLine($"Last Status Date: {app.LastStatusDate}");
+            Console.WriteLine($"Paid Fees: {app.PaidFees}");
+            Console.WriteLine($"Created By User ID: {app.CreatedByUserID}");
+        }
         static void Main(string[] args)
          {
 
@@ -371,11 +413,12 @@ namespace DVLD_ConsoleTest
             //string[] arr = Util.LoadLoginDataFromSessionFile();
             //Console.WriteLine(arr[0]+" , " + arr[1]);
 
-           // TestFindApplicationType();
-          // TestGetApplicationTypes();
-         // TestEditApplicationType();
-          ///  TestGetApplicationTypes();
-
+            // TestFindApplicationType();
+            // TestGetApplicationTypes();
+            // TestEditApplicationType();
+            ///  TestGetApplicationTypes();
+            //TestFindApplication(110);
+            TestFindLocalDrivingLicenseApplication(37);
         }
     }
 }

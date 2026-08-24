@@ -19,6 +19,9 @@ namespace DVLD
         {
             currentUser = null;
         }
+        // This will be removed :
+        public static User testUser = User.Find(1);
+        
 
     }
 }

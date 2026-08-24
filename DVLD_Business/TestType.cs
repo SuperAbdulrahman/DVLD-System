@@ -31,7 +31,7 @@ namespace DVLD_Business
 
         }
 
-        public TestType(enTestType ID, string TestTypeTitel, string TestTypeDescription, decimal TestTypeFees)
+        private TestType(enTestType ID, string TestTypeTitel, string TestTypeDescription, decimal TestTypeFees)
 
         {
             this.TestTypeID = ID;

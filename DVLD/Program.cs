@@ -1,4 +1,5 @@
-﻿using DVLD.ApplicationTypes;
+﻿using DVLD.Applications;
+using DVLD.ApplicationTypes;
 using DVLD.People;
 using DVLD.Users;
 using System;
@@ -20,9 +21,10 @@ namespace DVLD
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new frmLoginScreen());
-            Application.Run(new MainForm());
+            // Application.Run(new MainForm());
+            Application.Run(new frmManageLDApplications());
             // Application.Run(new frmManageUsers());
-          //  Application.Run(new frmAddEditUser(21));
+            //  Application.Run(new frmAddEditUser(21));
             // Application.Run(new MainForm());
             //Application.Run(new frmAddEditPerson());
             //Another method
