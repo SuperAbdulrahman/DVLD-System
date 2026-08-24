@@ -285,6 +285,7 @@
             this.toolStripDropDownDrivers.ShowDropDownArrow = false;
             this.toolStripDropDownDrivers.Size = new System.Drawing.Size(118, 68);
             this.toolStripDropDownDrivers.Text = "Drivers";
+            this.toolStripDropDownDrivers.Click += new System.EventHandler(this.toolStripDropDownDrivers_Click);
             // 
             // toolStripDropDownUsers
             // 

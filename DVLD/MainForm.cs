@@ -1,4 +1,5 @@
 ﻿using DVLD.ApplicationTypes;
+using DVLD.Drivers;
 using DVLD.Tests.TestsTypes;
 using DVLD.Users;
 using DVLD_Business;
@@ -66,6 +67,12 @@ namespace DVLD
         private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageTestTypes frm = new frmManageTestTypes();
+            frm.ShowDialog();
+        }
+
+        private void toolStripDropDownDrivers_Click(object sender, EventArgs e)
+        {
+            frmListDrivers frm = new frmListDrivers();
             frm.ShowDialog();
         }
     }
