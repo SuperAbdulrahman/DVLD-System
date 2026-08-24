@@ -22,7 +22,7 @@ namespace DVLD
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new frmLoginScreen());
             // Application.Run(new MainForm());
-            Application.Run(new frmAddEditNewLocalDrivingLicenseApplication());
+            Application.Run(new frmManageLDApplications());
             // Application.Run(new frmManageUsers());
             //  Application.Run(new frmAddEditUser(21));
             // Application.Run(new MainForm());

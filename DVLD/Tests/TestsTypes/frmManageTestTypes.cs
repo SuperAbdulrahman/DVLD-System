@@ -45,6 +45,7 @@ namespace DVLD.Tests.TestsTypes
         {
             _RefreshTestTypesList();
             _FormatDataGridView();
+
         }
 
 

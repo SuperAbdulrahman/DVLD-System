@@ -30,7 +30,7 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlPersonCard1 = new DVLD.ctrlPersonCard();
+            this.ctrlPersonCard2 = new DVLD.ctrlPersonCard();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -38,7 +38,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblTitle.Location = new System.Drawing.Point(440, 50);
+            this.lblTitle.Location = new System.Drawing.Point(356, 31);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(278, 54);
             this.lblTitle.TabIndex = 1;
@@ -47,11 +47,12 @@
             // btnClose
             // 
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(930, 453);
+            this.btnClose.Location = new System.Drawing.Point(884, 444);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(154, 43);
             this.btnClose.TabIndex = 11;
@@ -59,20 +60,22 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ctrlPersonCard1
+            // ctrlPersonCard2
             // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(47, 107);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(1058, 340);
-            this.ctrlPersonCard1.TabIndex = 12;
+            this.ctrlPersonCard2.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCard2.Location = new System.Drawing.Point(2, 88);
+            this.ctrlPersonCard2.Name = "ctrlPersonCard2";
+            this.ctrlPersonCard2.Size = new System.Drawing.Size(1058, 340);
+            this.ctrlPersonCard2.TabIndex = 12;
             // 
             // frmPersonDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(1147, 537);
-            this.Controls.Add(this.ctrlPersonCard1);
+            this.ClientSize = new System.Drawing.Size(1061, 506);
+            this.Controls.Add(this.ctrlPersonCard2);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -88,6 +91,6 @@
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnClose;
-        private ctrlPersonCard ctrlPersonCard1;
+        private ctrlPersonCard ctrlPersonCard2;
     }
 }

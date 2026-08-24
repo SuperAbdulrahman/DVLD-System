@@ -16,12 +16,12 @@ namespace DVLD.People
         public frmPersonDetails(int PersonID)
         {
             InitializeComponent();
-            ctrlPersonCard1.LoadPersonInfo(PersonID);
+            ctrlPersonCard2.LoadPersonInfo(PersonID);
         }
         public frmPersonDetails(string NationalNo)
         {
             InitializeComponent();
-            ctrlPersonCard1.LoadPersonInfo(NationalNo);
+            ctrlPersonCard2.LoadPersonInfo(NationalNo);
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

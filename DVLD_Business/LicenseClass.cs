@@ -10,6 +10,11 @@ namespace DVLD_Business
 {
     public class LicenseClass
     {
+        public enum enLicenseClasses
+        {
+            SmallMotorcycle = 1, HeavyMotorcycleLicense = 2, Ordinarydrivinglicense = 3,
+            Commercial = 4, Agricultural = 5, SmallAndMediumBus = 6, TruckAndHeavyVehicle = 7
+        }
         enum enMode { AddNew, Update }
         private enMode Mode;
         public int ID { get; private set; }
@@ -21,7 +26,7 @@ namespace DVLD_Business
 
 
         public LicenseClass() { }
-        public LicenseClass(int iD, string name, string description, byte minimumAllowedAge, byte validityLength, decimal fees)
+        private LicenseClass(int iD, string name, string description, byte minimumAllowedAge, byte validityLength, decimal fees)
         {
             ID = iD;
             Name = name;

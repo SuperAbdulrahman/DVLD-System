@@ -17,7 +17,7 @@ namespace DVLD
     public partial class ctrlPersonCard : UserControl
     {
         private Person _Person;
-        private int _PersonID;
+        private int _PersonID; 
         public int PersonID
         {
             get { return _PersonID; }
@@ -34,7 +34,7 @@ namespace DVLD
         {
             _PersonID = PersonID; // Store the ID globally for the Edit button
             _Person = Person.Find(PersonID);
-
+          
             if (_Person == null)
             {
                 ResetPersonInfo(); // You must implement this to clear old labels!
@@ -98,8 +98,7 @@ namespace DVLD
         }
         private void _ReloadPersonCard(object sender , int PersonID)
         {
-
-          LoadPersonInfo(PersonID);
+            LoadPersonInfo(PersonID);
         }
         // This MUST be public so parent forms can talk to it!
 
@@ -128,6 +127,9 @@ namespace DVLD
             pbImage.Image = Resources.Male_512;
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
 
+        }
     }
 }
