@@ -27,6 +27,7 @@ namespace DVLD_Business
         public enIssueReason IssueReason { get; set; }
         public int CreatedByUserID;
 
+
         //Cashe feilds :
         private User _createdByUserInfo;
         private Application _applicationInfo;
@@ -166,7 +167,11 @@ namespace DVLD_Business
             return null;
         }
 
-
+        public bool IsExpired()
+        {
+            return DateTime.Now > ExpirationDate;
+        }
+      
         public static bool Delete(int licenseID)
         {
             return LicenseDataAccess.Delete(licenseID);

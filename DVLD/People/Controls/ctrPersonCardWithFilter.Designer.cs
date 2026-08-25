@@ -123,6 +123,7 @@
             // 
             // ctrlPersonCard2
             // 
+            this.ctrlPersonCard2.BackColor = System.Drawing.Color.White;
             this.ctrlPersonCard2.Location = new System.Drawing.Point(3, 139);
             this.ctrlPersonCard2.Name = "ctrlPersonCard2";
             this.ctrlPersonCard2.Size = new System.Drawing.Size(1058, 340);

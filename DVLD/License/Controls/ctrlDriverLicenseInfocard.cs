@@ -17,6 +17,11 @@ namespace DVLD.License.Controls
     {
         private int _LicenseID;
         private DVLD_Business.License _License;
+
+        public DVLD_Business.License LicenseInfo
+        {
+            get { return _License; }
+        }
         public ctrlDriverLicenseInfocard()
         {
             InitializeComponent();
@@ -47,6 +52,7 @@ namespace DVLD.License.Controls
                 MessageBox.Show("No License Found for Application with ID = " + AppID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            _LicenseID = _License.LicenseID;
             _FillDriverLicenseCardInfo();
             return true;
         }
@@ -96,7 +102,7 @@ namespace DVLD.License.Controls
             lblGenderValue.Text = (_License.DriverInfo.PersonInfo.Gender)? "Female" : "Male";
             lblIssueDateValue.Text = _License.IssueDate.ToString();
             lblIssueReasonValue.Text = _License.IssueReason.ToString();
-            lblNotesValue.Text = _License.Notes.ToString();
+            lblNotesValue.Text = _License.Notes ?? "N/A";
             lblIsActiveValue.Text = (_License.IsActive) ? "Yes" : "No";
             lblDOBValue.Text = _License.DriverInfo.PersonInfo.DateOfBirth.ToString();
             lblDriverIDValue.Text = _License.DriverID.ToString();

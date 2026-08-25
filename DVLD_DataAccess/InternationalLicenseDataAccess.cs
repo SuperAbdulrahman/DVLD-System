@@ -244,6 +244,39 @@ namespace DVLD_DataAccess
 
             return isFound;
         }
+        public static int GetActiveInternationalLicenseIDByPersonID(int personID)
+        {
+            int activeILicenseID = -1;
+
+            string query = @"SELECT 1 FROM InternationalLicenses AS i
+                            JOIN Drivers AS d ON i.DriverID = d.DriverID
+                            WHERE d.PersonID =@PersonID";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", personID);
+
+
+                    connection.Open();
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        activeILicenseID = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return activeILicenseID;
+        }
     }
 }
 

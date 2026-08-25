@@ -119,6 +119,7 @@ namespace DVLD_Business
         
         private bool _AddNewApplication()
         {
+            ApplicationDate = DateTime.Now;
             this.ApplicationID= ApplicationDataAccess.AddNewApplication(this.ApplicantPersonID,this.ApplicationDate,this.ApplicationTypeID,(byte)this.Status,this.LastStatusDate,this.PaidFees,this.CreatedByUserID);
             return (ApplicationID >0);
         }

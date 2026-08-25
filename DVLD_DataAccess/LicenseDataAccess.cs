@@ -39,7 +39,7 @@ namespace DVLD_DataAccess
                             notes = reader["Notes"] is DBNull ? "" : (string)reader["Notes"];
                             paidFees = reader["PaidFees"] is DBNull ? 0 : (decimal)reader["PaidFees"];
                             isActive = reader["IsActive"] is DBNull ? false : (bool)reader["IsActive"];
-                            issueReason = reader["IssueReason"] is DBNull ? 0 : (int)reader["IssueReason"];
+                            issueReason = reader["IssueReason"] is DBNull ? 0 : (byte)reader["IssueReason"];
                             createdByUserID = reader["CreatedByUserID"] is DBNull ? 0 : (int)reader["CreatedByUserID"];
 
                             isFound = true;

@@ -1,5 +1,6 @@
 ﻿using DVLD.ApplicationTypes;
 using DVLD.Drivers;
+using DVLD.License.International;
 using DVLD.Tests.TestsTypes;
 using DVLD.Users;
 using DVLD_Business;
@@ -73,6 +74,12 @@ namespace DVLD
         private void toolStripDropDownDrivers_Click(object sender, EventArgs e)
         {
             frmListDrivers frm = new frmListDrivers();
+            frm.ShowDialog();
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNewInternationalLicense frm = new frmNewInternationalLicense();
             frm.ShowDialog();
         }
     }
