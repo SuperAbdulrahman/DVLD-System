@@ -268,6 +268,7 @@ namespace DVLD_DataAccess
                             WHERE Drivers.PersonID = @PersonID
                               AND Licenses.LicenseClass = @LicenseClassID
                               AND Licenses.IsActive = 1
+                              AND ExpirationDate > GETDATE()
                             ORDER BY Licenses.LicenseID DESC;";
 
             try

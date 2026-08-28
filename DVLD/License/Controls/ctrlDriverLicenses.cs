@@ -98,7 +98,7 @@ namespace DVLD.License.Controls
                 dgvInternationalLicensessList.DataSource = _dtInternationalLicenesesList;
             }
             _FormatInternationallLicensesGrid();
-            _UpdateRecordsCounter(_dtLocalLicensesList, lblRecordsValueLocal);
+            _UpdateRecordsCounter(_dtInternationalLicenesesList, lblRecordsValueInternational);
         }
 
         private void _FormatInternationallLicensesGrid()
@@ -138,7 +138,10 @@ namespace DVLD.License.Controls
                 lblName.Text = "0";
         }
 
-
-
+        private void ShowLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDriverLicenseInfo frm = new frmDriverLicenseInfo((int)dgvLocalLicensesList.CurrentRow.Cells["LicenseID"].Value,frmDriverLicenseInfo.enMode.LicenseID);
+            frm.ShowDialog();
+        }
     }
 }

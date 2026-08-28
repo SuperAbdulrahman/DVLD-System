@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DVLD.Applications.Controls
+namespace DVLD.License.Detain
 {
-    public partial class ctrlInternationalLicenseApplication : UserControl
+    public partial class frmListDetainedLicenses : Form
     {
-        public ctrlInternationalLicenseApplication()
+        public frmListDetainedLicenses()
         {
             InitializeComponent();
         }

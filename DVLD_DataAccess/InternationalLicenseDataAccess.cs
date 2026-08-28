@@ -84,7 +84,8 @@ namespace DVLD_DataAccess
         {
             DataTable dt = new DataTable();
 
-            string query = @"SELECT * FROM InternationalLicenses;";
+            string query = @"SELECT i.InternationalLicenseID,i.ApplicationID,i.DriverID,i.IssuedUsingLocalLicenseID,
+                            i.IssueDate,i.ExpirationDate,i.IsActive FROM InternationalLicenses as i;";
 
             try
             {
@@ -277,6 +278,33 @@ namespace DVLD_DataAccess
 
             return activeILicenseID;
         }
+        //public static bool IsIntLicenseDetained(int licenseID)
+        //{
+        //    bool isDetained = false;
+
+        //    string query = @"SELECT 1 FROM DetainedLicenses WHERE LicenseID = @LicenseID
+        //                    AND IsReleased = 0 ;";
+
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@LicenseID", licenseID);
+        //            connection.Open();
+
+        //            object result = command.ExecuteScalar();
+
+        //            if (result != null)
+        //                isDetained = true;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+
+        //    return isDetained;
+        //}
     }
 }
 

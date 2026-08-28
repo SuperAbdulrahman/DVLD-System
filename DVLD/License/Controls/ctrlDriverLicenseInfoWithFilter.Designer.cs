@@ -42,9 +42,9 @@
             this.gbFilter.Controls.Add(this.txtFindValue);
             this.gbFilter.Controls.Add(this.lblFindBy);
             this.gbFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFilter.Location = new System.Drawing.Point(14, 12);
+            this.gbFilter.Location = new System.Drawing.Point(14, 0);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(1019, 88);
+            this.gbFilter.Size = new System.Drawing.Size(1024, 88);
             this.gbFilter.TabIndex = 2;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
@@ -85,20 +85,20 @@
             // ctrlDriverLicenseInfocard1
             // 
             this.ctrlDriverLicenseInfocard1.BackColor = System.Drawing.Color.White;
-            this.ctrlDriverLicenseInfocard1.Location = new System.Drawing.Point(0, 82);
+            this.ctrlDriverLicenseInfocard1.Location = new System.Drawing.Point(14, 89);
             this.ctrlDriverLicenseInfocard1.Name = "ctrlDriverLicenseInfocard1";
-            this.ctrlDriverLicenseInfocard1.Size = new System.Drawing.Size(1046, 494);
-            this.ctrlDriverLicenseInfocard1.TabIndex = 0;
+            this.ctrlDriverLicenseInfocard1.Size = new System.Drawing.Size(1036, 440);
+            this.ctrlDriverLicenseInfocard1.TabIndex = 50;
             // 
             // ctrlDriverLicenseInfoWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.gbFilter);
             this.Controls.Add(this.ctrlDriverLicenseInfocard1);
+            this.Controls.Add(this.gbFilter);
             this.Name = "ctrlDriverLicenseInfoWithFilter";
-            this.Size = new System.Drawing.Size(1053, 573);
+            this.Size = new System.Drawing.Size(1053, 532);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             this.ResumeLayout(false);
@@ -106,11 +106,10 @@
         }
 
         #endregion
-
-        private ctrlDriverLicenseInfocard ctrlDriverLicenseInfocard1;
         private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtFindValue;
         private System.Windows.Forms.Label lblFindBy;
+        private ctrlDriverLicenseInfocard ctrlDriverLicenseInfocard1;
     }
 }

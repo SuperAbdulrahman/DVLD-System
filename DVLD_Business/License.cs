@@ -1,6 +1,7 @@
 ﻿using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,24 @@ namespace DVLD_Business
 {
     public class License
     {
+        public enum enRenewLicenseValidationResult
+        {
+            Success,
+            LicenseExpired,
+            LicenseDetained,
+            ThereIsAnActiveRenwedLicenseFromTheSameClass,
+            AppFaildToSave,
+            SaveFaild
+        }
+        public enum enReplaceDamgedLostValidationResult
+        {
+            Success,
+            LicenseExpired,
+            LicenseInActive,
+            LicenseDetained,
+            AppFaildToSave,
+            SaveFaild
+        }
         private enum enMode { AddNew, Update }
         private enMode Mode;
 
@@ -169,14 +188,120 @@ namespace DVLD_Business
 
         public bool IsExpired()
         {
-            return DateTime.Now > ExpirationDate;
+            return DateTime.Now > this.ExpirationDate;
         }
-      
+        private enRenewLicenseValidationResult _CanRenew()
+        {
+            if(!IsExpired())
+                return enRenewLicenseValidationResult.LicenseExpired;
+            if(IsLicenseDetained())
+                return enRenewLicenseValidationResult.LicenseDetained;
+            if (GetActiveLicenseIDByPersonID(this.DriverInfo.PersonID, (int)this.LicenseClassID) != -1)
+                return enRenewLicenseValidationResult.ThereIsAnActiveRenwedLicenseFromTheSameClass;
+            return enRenewLicenseValidationResult.Success;
+        }
+
+        public enReplaceDamgedLostValidationResult ReplaceDamgedLostLicense(License NewLicense,ApplicationType.enApplicationType AppType, int CreatedByUserID)
+        {
+            if (!this.IsActive)
+                return enReplaceDamgedLostValidationResult.LicenseInActive;
+
+            if (IsExpired())
+                return enReplaceDamgedLostValidationResult.LicenseExpired;
+
+            if (IsLicenseDetained())
+                return enReplaceDamgedLostValidationResult.LicenseDetained;
+
+            Application ReplaceDamgedLostApp = new Application();
+            if (!_CreateLicenseApplication(this, ReplaceDamgedLostApp, AppType, CreatedByUserID))
+                return enReplaceDamgedLostValidationResult.AppFaildToSave;
+
+            _FillNewLicenseInfo(NewLicense, ReplaceDamgedLostApp, AppType, CreatedByUserID);
+            if(!NewLicense._AddNew())
+            {
+                return enReplaceDamgedLostValidationResult.SaveFaild;
+            }
+
+            this.IsActive = false;
+            if (!this.Save())
+                return enReplaceDamgedLostValidationResult.AppFaildToSave;
+
+            return enReplaceDamgedLostValidationResult.Success;
+        }
         public static bool Delete(int licenseID)
         {
             return LicenseDataAccess.Delete(licenseID);
         }
+        public  enRenewLicenseValidationResult Renew(License NewLicense,int CreatedByUserID)
+        {
+            var result = this._CanRenew();
+            if (result!= enRenewLicenseValidationResult.Success)
+                return result;
 
+            Application RenewApplication = new Application();
+            ApplicationType.enApplicationType AppTypeID = ApplicationType.enApplicationType.RenewDrivingLicense;
+
+            if (!this._CreateLicenseApplication(this,RenewApplication,AppTypeID,CreatedByUserID))
+                return enRenewLicenseValidationResult.AppFaildToSave;
+
+            _FillNewLicenseInfo(NewLicense, RenewApplication,AppTypeID,CreatedByUserID);
+            if(!NewLicense._AddNew())
+            {
+                return enRenewLicenseValidationResult.SaveFaild;
+            }
+
+            this.IsActive = false;
+            if(!this.Save())
+                return enRenewLicenseValidationResult.SaveFaild;
+
+            return enRenewLicenseValidationResult.Success;
+        }
+      
+        private bool _CreateLicenseApplication(License OldLicense, Application App, ApplicationType.enApplicationType AppType , int CreatedByUserID)
+        {
+            ApplicationType ApplicationType = ApplicationType.Find((int)AppType);
+
+
+            App.ApplicantPersonID = OldLicense.DriverInfo.PersonID;
+            App.ApplicationTypeID = ApplicationType.ApplicationID;
+            App.Status = Application.enApplicationStatus.Completed;
+            App.LastStatusDate = DateTime.Now;
+            App.PaidFees = ApplicationType.ApplicationFees;
+            App.CreatedByUserID = CreatedByUserID;
+
+            if (App.Save())
+                return true;
+
+            return false;
+        }
+        private void _FillNewLicenseInfo(License NewLicense,Application RenewApp, ApplicationType.enApplicationType AppType, int CreatedByUserID)
+        {
+            NewLicense.ApplicationID = RenewApp.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClassID = this.LicenseClassID;
+            NewLicense.PaidFees = NewLicense.LicenseClassInfo.Fees;
+            NewLicense.IsActive = true;
+            
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            switch (AppType)
+            {
+                case ApplicationType.enApplicationType.NewDrivingLicense:
+                    NewLicense.IssueReason = enIssueReason.FirstTime;
+                    break;
+                case ApplicationType.enApplicationType.RenewDrivingLicense:
+                    NewLicense.IssueReason = enIssueReason.Renew;
+                    break;
+                case ApplicationType.enApplicationType.ReplaceLostDrivingLicense:
+                    NewLicense.IssueReason = enIssueReason.ReplacementForLost;
+                    break;
+                case ApplicationType.enApplicationType.ReplaceDamagedDrivingLicense:
+                    NewLicense.IssueReason = enIssueReason.ReplacementForDamaged;
+                    break;
+                default:
+                    break;
+            }
+        }
         private bool _AddNew()
         {
             this.IssueDate = DateTime.Now;
