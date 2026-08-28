@@ -1,5 +1,7 @@
-﻿using DVLD.ApplicationTypes;
+﻿using DVLD.Applications;
+using DVLD.ApplicationTypes;
 using DVLD.Drivers;
+using DVLD.License;
 using DVLD.License.International;
 using DVLD.Tests.TestsTypes;
 using DVLD.Users;
@@ -80,6 +82,30 @@ namespace DVLD
         private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmNewInternationalLicense frm = new frmNewInternationalLicense();
+            frm.ShowDialog();
+        }
+
+        private void internationalLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageInternationalLicenses frm = new frmManageInternationalLicenses();
+            frm.ShowDialog();
+        }
+
+        private void localDrivingLiceneseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageLDApplications frm = new frmManageLDApplications();
+            frm.ShowDialog();
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditNewLocalDrivingLicenseApplication frm = new frmAddEditNewLocalDrivingLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void renewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRenewLicenseApplication frm = new frmRenewLicenseApplication();
             frm.ShowDialog();
         }
     }

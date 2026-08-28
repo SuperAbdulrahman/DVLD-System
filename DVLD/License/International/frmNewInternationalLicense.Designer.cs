@@ -108,9 +108,9 @@
             this.gbApplicationBasicInfo.Controls.Add(this.lblFees);
             this.gbApplicationBasicInfo.Controls.Add(this.lblILLicenseID);
             this.gbApplicationBasicInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbApplicationBasicInfo.Location = new System.Drawing.Point(12, 600);
+            this.gbApplicationBasicInfo.Location = new System.Drawing.Point(12, 562);
             this.gbApplicationBasicInfo.Name = "gbApplicationBasicInfo";
-            this.gbApplicationBasicInfo.Size = new System.Drawing.Size(1022, 233);
+            this.gbApplicationBasicInfo.Size = new System.Drawing.Size(1022, 227);
             this.gbApplicationBasicInfo.TabIndex = 21;
             this.gbApplicationBasicInfo.TabStop = false;
             this.gbApplicationBasicInfo.Text = "Application Basic Info";
@@ -368,7 +368,7 @@
             this.lliShowLicenseInfo.AutoSize = true;
             this.lliShowLicenseInfo.Enabled = false;
             this.lliShowLicenseInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.lliShowLicenseInfo.Location = new System.Drawing.Point(187, 870);
+            this.lliShowLicenseInfo.Location = new System.Drawing.Point(184, 805);
             this.lliShowLicenseInfo.Name = "lliShowLicenseInfo";
             this.lliShowLicenseInfo.Size = new System.Drawing.Size(152, 23);
             this.lliShowLicenseInfo.TabIndex = 60;
@@ -381,7 +381,7 @@
             this.lliShowLicenseHistory.AutoSize = true;
             this.lliShowLicenseHistory.Enabled = false;
             this.lliShowLicenseHistory.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.lliShowLicenseHistory.Location = new System.Drawing.Point(8, 870);
+            this.lliShowLicenseHistory.Location = new System.Drawing.Point(5, 805);
             this.lliShowLicenseHistory.Name = "lliShowLicenseHistory";
             this.lliShowLicenseHistory.Size = new System.Drawing.Size(173, 23);
             this.lliShowLicenseHistory.TabIndex = 61;
@@ -397,7 +397,7 @@
             this.btnIssue.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIssue.Image = global::DVLD.Properties.Resources.International_32;
             this.btnIssue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIssue.Location = new System.Drawing.Point(901, 850);
+            this.btnIssue.Location = new System.Drawing.Point(889, 795);
             this.btnIssue.Name = "btnIssue";
             this.btnIssue.Size = new System.Drawing.Size(133, 43);
             this.btnIssue.TabIndex = 62;
@@ -413,7 +413,7 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(742, 850);
+            this.btnClose.Location = new System.Drawing.Point(737, 795);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(133, 43);
             this.btnClose.TabIndex = 63;
@@ -425,19 +425,18 @@
             // 
             this.ctrlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
             this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = true;
-            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(0, 41);
+            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(-3, 53);
             this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
-            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1053, 573);
-            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 61;
+            this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(1053, 532);
+            this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 64;
             this.ctrlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseInfoWithFilter1_OnLicenseSelected);
             // 
             // frmNewInternationalLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1049, 921);
+            this.ClientSize = new System.Drawing.Size(1049, 840);
             this.Controls.Add(this.btnIssue);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lliShowLicenseInfo);
@@ -491,12 +490,12 @@
         private System.Windows.Forms.Label lblFees;
         private System.Windows.Forms.Label lblILLicenseID;
         private System.Windows.Forms.LinkLabel lliShowLicenseInfo;
-        private Controls.ctrlDriverLicenseInfoWithFilter ctrlDriverLicenseInfoWithFilter1;
         private System.Windows.Forms.LinkLabel lliShowLicenseHistory;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label lblLocalLicenseIDValue;
         private System.Windows.Forms.Label lblLocalLicenseID;
         private System.Windows.Forms.Button btnIssue;
         private System.Windows.Forms.Button btnClose;
+        private Controls.ctrlDriverLicenseInfoWithFilter ctrlDriverLicenseInfoWithFilter1;
     }
 }

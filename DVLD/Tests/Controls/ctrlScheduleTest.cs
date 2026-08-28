@@ -195,7 +195,7 @@ namespace DVLD.Tests.Controls
 
             //Fill the card info :
             _FillMainCardInfo();
-            dateTimePicker1.Value = _TestAppointment.Date;
+           
 
             // Set the min date so user 
             if (DateTime.Compare(DateTime.Now,_TestAppointment.Date)<0)
@@ -203,6 +203,7 @@ namespace DVLD.Tests.Controls
             else
                 dateTimePicker1.MinDate = _TestAppointment.Date;
 
+            dateTimePicker1.Value = _TestAppointment.Date;
             // Check if it is retake application 
             if (_TestAppointment.RetakeTestAppID == -1)
                 return;

@@ -52,12 +52,6 @@ namespace DVLD.License.International
 
         }
 
-        private void lliShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            frmLicenseHistory frm = new frmLicenseHistory(_LocalLicenseInfo.DriverInfo.PersonID);
-            frm.ShowDialog();
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -88,10 +82,12 @@ namespace DVLD.License.International
             }
             if(_CreateNewILicense())
             {
+                MessageBox.Show("License was Issued successfully! you can view it from license info", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 lblIAppIDValue.Text = _ILicenseApplication.ApplicationID.ToString();
                 lblILLicenseIDValue.Text = _ILicense.InternationalLicenseID.ToString();
                 lliShowLicenseInfo.Enabled = true;
                 btnIssue.Enabled = false;
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
@@ -156,7 +152,13 @@ namespace DVLD.License.International
 
         private void lliShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-          
+            frmInternationalLicenseInfo frm = new frmInternationalLicenseInfo(_ILicenseID);
+            frm.ShowDialog();
+        }
+        private void lliShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLicenseHistory frm = new frmLicenseHistory(_LocalLicenseInfo.DriverInfo.PersonID);
+            frm.ShowDialog();
         }
     }
 }

@@ -134,6 +134,7 @@
             this.localLicenseToolStripMenuItem.Name = "localLicenseToolStripMenuItem";
             this.localLicenseToolStripMenuItem.Size = new System.Drawing.Size(257, 38);
             this.localLicenseToolStripMenuItem.Text = "Local License";
+            this.localLicenseToolStripMenuItem.Click += new System.EventHandler(this.localLicenseToolStripMenuItem_Click);
             // 
             // internationalLicenseToolStripMenuItem
             // 
@@ -152,6 +153,7 @@
             this.renewToolStripMenuItem.Name = "renewToolStripMenuItem";
             this.renewToolStripMenuItem.Size = new System.Drawing.Size(415, 38);
             this.renewToolStripMenuItem.Text = "Renew Driving License";
+            this.renewToolStripMenuItem.Click += new System.EventHandler(this.renewToolStripMenuItem_Click);
             // 
             // replacementForToolStripMenuItem
             // 
@@ -200,6 +202,7 @@
             this.localDrivingLiceneseApplicationsToolStripMenuItem.Name = "localDrivingLiceneseApplicationsToolStripMenuItem";
             this.localDrivingLiceneseApplicationsToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
             this.localDrivingLiceneseApplicationsToolStripMenuItem.Text = "Local Driving Licenese Applications";
+            this.localDrivingLiceneseApplicationsToolStripMenuItem.Click += new System.EventHandler(this.localDrivingLiceneseApplicationsToolStripMenuItem_Click);
             // 
             // internationalLicenseApplicationToolStripMenuItem
             // 
@@ -209,6 +212,7 @@
             this.internationalLicenseApplicationToolStripMenuItem.Name = "internationalLicenseApplicationToolStripMenuItem";
             this.internationalLicenseApplicationToolStripMenuItem.Size = new System.Drawing.Size(378, 54);
             this.internationalLicenseApplicationToolStripMenuItem.Text = "International License Application";
+            this.internationalLicenseApplicationToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseApplicationToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 

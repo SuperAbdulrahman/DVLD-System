@@ -179,9 +179,17 @@ namespace DVLD_Business
         {
             return InternationalLicenseDataAccess.GetInternationalLicensesByDriverID(driverID);
         }
+        public static DataTable GetInternationalLicenses()
+        {
+            return InternationalLicenseDataAccess.GetInternationalLicenses();
+        }
         public static int GetActiveInternationalLicenseIDByPersonID(int personID)
         {
             return InternationalLicenseDataAccess.GetActiveInternationalLicenseIDByPersonID(personID);
         }
+        //public bool IsIntLicenseDetained()
+        //{
+        //    return InternationalLicenseDataAccess.IsIntLicenseDetained(this.InternationalLicenseID);
+        //}
     }
 }

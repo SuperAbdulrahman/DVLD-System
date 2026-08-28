@@ -339,7 +339,7 @@ namespace DVLD.Applications
 
             int LocalAppID = (int)dgvLDLApplications.CurrentRow.Cells[0].Value;
             LocalDrivingLicenseApplication LocalApp = LocalDrivingLicenseApplication.FindLocalDrivingLicenseApplicationByLocalAppID(LocalAppID);
-            frmDriverLicenseInfo frm = new frmDriverLicenseInfo(LocalApp.ApplicationID);
+            frmDriverLicenseInfo frm = new frmDriverLicenseInfo(LocalApp.ApplicationID,frmDriverLicenseInfo.enMode.AppID);
             frm.ShowDialog();
 
         }

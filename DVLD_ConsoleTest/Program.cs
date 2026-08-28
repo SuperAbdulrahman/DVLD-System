@@ -387,6 +387,96 @@ namespace DVLD_ConsoleTest
             Console.WriteLine($"Paid Fees: {app.PaidFees}");
             Console.WriteLine($"Created By User ID: {app.CreatedByUserID}");
         }
+        static void TestReplaceDamagedLicense(
+    int oldLicenseID,
+    int createdByUserID,
+    ApplicationType.enApplicationType applicationType)
+        {
+            Console.WriteLine("========================================");
+            Console.WriteLine("   Replace Damaged/Lost License Test");
+            Console.WriteLine("========================================");
+
+            Console.WriteLine($"Old License ID: {oldLicenseID}");
+            Console.WriteLine($"Application Type: {applicationType}");
+            Console.WriteLine($"Created By User ID: {createdByUserID}");
+            Console.WriteLine();
+
+            // Find the old license
+            License oldLicense = License.FindByLicenseID(oldLicenseID);
+
+            if (oldLicense == null)
+            {
+                Console.WriteLine("ERROR: License was not found.");
+                return;
+            }
+
+            Console.WriteLine("Old License found successfully.");
+            Console.WriteLine($"License ID: {oldLicense.LicenseID}");
+            Console.WriteLine($"Driver ID: {oldLicense.DriverID}");
+            Console.WriteLine($"Issue Date: {oldLicense.IssueDate}");
+            Console.WriteLine($"Expiration Date: {oldLicense.ExpirationDate}");
+            Console.WriteLine($"Is Active: {oldLicense.IsActive}");
+            Console.WriteLine($"Is Expired: {oldLicense.IsExpired()}");
+            Console.WriteLine();
+
+            // Create the new license object
+            License newLicense = new License();
+
+            Console.WriteLine("Attempting replacement...");
+            Console.WriteLine();
+
+            // Call your business method
+            License.enReplaceDamgedLostValidationResult result =
+                oldLicense.ReplaceDamgedLostLicense(
+                    newLicense,
+                    applicationType,
+                    createdByUserID);
+
+            Console.WriteLine($"Result: {result}");
+            Console.WriteLine();
+
+            // Display result
+            switch (result)
+            {
+                case License.enReplaceDamgedLostValidationResult.Success:
+                    Console.WriteLine("SUCCESS!");
+                    Console.WriteLine($"New License ID: {newLicense.LicenseID}");
+                    Console.WriteLine($"New Application ID: {newLicense.ApplicationID}");
+                    Console.WriteLine($"New License Issue Date: {newLicense.IssueDate}");
+                    Console.WriteLine($"New License Expiration Date: {newLicense.ExpirationDate}");
+                    Console.WriteLine($"New License Is Active: {newLicense.IsActive}");
+                    break;
+
+                case License.enReplaceDamgedLostValidationResult.LicenseExpired:
+                    Console.WriteLine("FAILED: The license has expired.");
+                    Console.WriteLine("The user should renew the license instead.");
+                    break;
+
+                case License.enReplaceDamgedLostValidationResult.LicenseInActive:
+                    Console.WriteLine("FAILED: The license is inactive.");
+                    break;
+
+                case License.enReplaceDamgedLostValidationResult.LicenseDetained:
+                    Console.WriteLine("FAILED: The license is detained.");
+                    break;
+
+                case License.enReplaceDamgedLostValidationResult.AppFaildToSave:
+                    Console.WriteLine("FAILED: The replacement application could not be saved.");
+                    break;
+
+                case License.enReplaceDamgedLostValidationResult.SaveFaild:
+                    Console.WriteLine("FAILED: The new license could not be saved.");
+                    break;
+
+                default:
+                    Console.WriteLine("FAILED: Unknown result.");
+                    break;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("========================================");
+        }
+
         static void Main(string[] args)
          {
 
@@ -418,7 +508,8 @@ namespace DVLD_ConsoleTest
             // TestEditApplicationType();
             ///  TestGetApplicationTypes();
             //TestFindApplication(110);
-            TestFindLocalDrivingLicenseApplication(37);
+            //TestFindLocalDrivingLicenseApplication(37);
+            TestReplaceDamagedLicense(25,1,ApplicationType.enApplicationType.ReplaceDamagedDrivingLicense);
         }
     }
 }
