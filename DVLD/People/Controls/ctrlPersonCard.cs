@@ -29,7 +29,7 @@ namespace DVLD
             InitializeComponent();
 
         }
-        public void LoadPersonInfo(int PersonID)
+        public bool LoadPersonInfo(int PersonID)
 
         {
             _PersonID = PersonID; // Store the ID globally for the Edit button
@@ -39,12 +39,13 @@ namespace DVLD
             {
                 ResetPersonInfo(); // You must implement this to clear old labels!
                 MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             _FillPersonCardInfo();
+            return true;
         }
-        public void LoadPersonInfo(string NationalNo)
+        public bool LoadPersonInfo(string NationalNo)
         {
             _Person = Person.Find(NationalNo);
 
@@ -52,11 +53,12 @@ namespace DVLD
             {
                 ResetPersonInfo();
                 MessageBox.Show("No Person with National No = " + NationalNo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             _PersonID = _Person.PersonID; // Sync the ID!
             _FillPersonCardInfo();
+            return true;
         }
         private void _FillPersonCardInfo()
         {

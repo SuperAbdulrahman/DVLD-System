@@ -28,7 +28,8 @@ namespace DVLD.Users.Controls
             if (!ctrlLoginInfoCard1.LoadUserLogginInfo(userID))
                 return;
 
-            ctrlPersonCard1.LoadPersonInfo(ctrlLoginInfoCard1.PersonID);
+            if (!ctrlPersonCard1.LoadPersonInfo(ctrlLoginInfoCard1.PersonID))
+                return;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace DVLD.License
         {
             ctrPersonCardWithFilter1.LoadPersonInfo(_PersonID);
             ctrPersonCardWithFilter1.FilterEnabled = false;
-
+            
             if (!ctrlDriverLicenses1.LoadDriverLicensesCardInfoByDPersonID(_PersonID))
                 this.Close();
         }

@@ -10,6 +10,14 @@ namespace DVLD_Business
 {
     public class InternationalLicense
     {
+        public enum enLicenseValidationResult
+        {
+            Valid,
+            LicenseNotActive,
+            LicenseExpired,
+            WrongLicenseClass
+        }
+
         private enum enMode { AddNew, Update }
         private enMode Mode;
 
@@ -21,8 +29,9 @@ namespace DVLD_Business
         public DateTime IssueDate { get; set; }
         public DateTime ExperationDate { get; set; }
         public bool IsActive { get; set; }
-   
-        public short ValidityLength { get; set; }
+
+
+        public short ValidityLength { get; set; } = 1;
 
         //Cashe feilds :
         private User _createdByUserInfo;
@@ -112,6 +121,18 @@ namespace DVLD_Business
                 
             return null;
         }
+        public static enLicenseValidationResult CanIssueFrom(License license)
+        {
+            if (!license.IsActive)
+                return enLicenseValidationResult.LicenseNotActive;
+            if(license.IsExpired())
+                return enLicenseValidationResult.LicenseExpired;
+            if (license.LicenseClassID != LicenseClass.enLicenseClasses.Ordinarydrivinglicense)
+                return enLicenseValidationResult.WrongLicenseClass;
+
+            return enLicenseValidationResult.Valid;
+
+        }
         public static bool IsInternationalLicenseExist(int internationalLicenseID)
         {
             return InternationalLicenseDataAccess.IsInternationalLicenseExist(internationalLicenseID);
@@ -157,6 +178,10 @@ namespace DVLD_Business
         public static DataTable GetInternationalLicensesByDriverID(int driverID)
         {
             return InternationalLicenseDataAccess.GetInternationalLicensesByDriverID(driverID);
+        }
+        public static int GetActiveInternationalLicenseIDByPersonID(int personID)
+        {
+            return InternationalLicenseDataAccess.GetActiveInternationalLicenseIDByPersonID(personID);
         }
     }
 }

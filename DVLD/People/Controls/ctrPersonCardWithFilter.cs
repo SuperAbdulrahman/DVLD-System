@@ -30,6 +30,7 @@ namespace DVLD.People
             get { return ctrlPersonCard2.SelectedPersonInfo; }
         }
         private bool _FilterEnabled = true;
+
         public bool FilterEnabled
         {
             get { return _FilterEnabled; }
@@ -130,9 +131,10 @@ namespace DVLD.People
             txtFindValue.Text = PersonID.ToString();
             FindNow(); 
         }
+
         private void txtFindValue_Validating(object sender, CancelEventArgs e)
         {
-            // The Red Error Icon belongs here!
+
             if (string.IsNullOrWhiteSpace(txtFindValue.Text))
             {
                 e.Cancel = true;
