@@ -33,7 +33,7 @@ namespace DVLD.Applications
 
             lblAppDateValue.Text = DateTime.Now.ToString();
             lblAppFeesValue.Text = _ApplicationType.ApplicationFees.ToString();
-            lblCreatedByValue.Text = SessionInfo.testUser.UserName;
+            lblCreatedByValue.Text = SessionInfo.currentUser.UserName;
 
         }
 
@@ -59,7 +59,7 @@ namespace DVLD.Applications
             bool isSaved = false;
             _NewLicenseInfo = new DVLD_Business.License();
 
-            var result = _OldLicenseInfo.ReplaceDamgedLostLicense(_NewLicenseInfo,(ApplicationType.enApplicationType) _ApplicationType.ApplicationID, SessionInfo.testUser.UserID);
+            var result = _OldLicenseInfo.ReplaceDamgedLostLicense(_NewLicenseInfo,(ApplicationType.enApplicationType) _ApplicationType.ApplicationID, SessionInfo.currentUser.UserID);
             switch (result)
             {
                 case DVLD_Business.License.enReplaceDamgedLostValidationResult.Success:
@@ -68,7 +68,7 @@ namespace DVLD.Applications
                 case DVLD_Business.License.enReplaceDamgedLostValidationResult.LicenseExpired:
                     MessageBox.Show("This license has expired. Please renew the license instead.", "License Expired", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                case DVLD_Business.License.enReplaceDamgedLostValidationResult.LicenseInActive:
+                case DVLD_Business.License.enReplaceDamgedLostValidationResult.LicenseInactive:
                     MessageBox.Show("Selected License is inactive!, Please renew the license instead!", "License inactive", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case DVLD_Business.License.enReplaceDamgedLostValidationResult.LicenseDetained:

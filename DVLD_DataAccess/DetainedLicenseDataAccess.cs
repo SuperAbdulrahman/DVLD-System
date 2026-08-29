@@ -55,7 +55,7 @@ namespace DVLD_DataAccess
         {
             DataTable dt = new DataTable();
 
-            string query = @"SELECT * FROM DetainedLicenses;";
+            string query = @"SELECT * FROM DetainedLicenses_View;";
 
             try
             {
@@ -230,5 +230,6 @@ namespace DVLD_DataAccess
 
             return isFound;
         }
+        
     }
 }

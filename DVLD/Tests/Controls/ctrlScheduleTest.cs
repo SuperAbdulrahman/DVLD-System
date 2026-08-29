@@ -257,7 +257,7 @@ namespace DVLD.Tests.Controls
                 retakeApp.Status = DVLD_Business.Application.enApplicationStatus.Completed;
                 retakeApp.LastStatusDate = DateTime.Now;
                 retakeApp.PaidFees = appType.ApplicationFees;
-                retakeApp.CreatedByUserID = SessionInfo.testUser.UserID;
+                retakeApp.CreatedByUserID = SessionInfo.currentUser.UserID;
 
                 if (!retakeApp.Save())
                 {
@@ -282,7 +282,7 @@ namespace DVLD.Tests.Controls
             _TestAppointment.LDLAppID = _LocalAppID;
             _TestAppointment.Date = dateTimePicker1.Value;
             _TestAppointment.PaidFees = decimal.Parse(lblTotalFeesValue.Text);
-            _TestAppointment.CreatedByUserID = SessionInfo.testUser.UserID;
+            _TestAppointment.CreatedByUserID = SessionInfo.currentUser.UserID;
 
 
             if (_TestAppointment.Save())

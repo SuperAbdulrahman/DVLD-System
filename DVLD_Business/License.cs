@@ -24,8 +24,23 @@ namespace DVLD_Business
         {
             Success,
             LicenseExpired,
-            LicenseInActive,
+            LicenseInactive,
             LicenseDetained,
+            AppFaildToSave,
+            SaveFaild
+        }
+        public enum enDetainLicenseValidation
+        {
+            Success,
+            LicenseInactive,
+            LicenseDetained,
+            SaveFaild,
+
+        }
+        public enum enReleaseLicenseValidation
+        {
+            Success,
+            LicenseNotDetained,
             AppFaildToSave,
             SaveFaild
         }
@@ -194,7 +209,7 @@ namespace DVLD_Business
         {
             if(!IsExpired())
                 return enRenewLicenseValidationResult.LicenseExpired;
-            if(IsLicenseDetained())
+            if(IsLicenseDetained()!=-1)
                 return enRenewLicenseValidationResult.LicenseDetained;
             if (GetActiveLicenseIDByPersonID(this.DriverInfo.PersonID, (int)this.LicenseClassID) != -1)
                 return enRenewLicenseValidationResult.ThereIsAnActiveRenwedLicenseFromTheSameClass;
@@ -204,12 +219,12 @@ namespace DVLD_Business
         public enReplaceDamgedLostValidationResult ReplaceDamgedLostLicense(License NewLicense,ApplicationType.enApplicationType AppType, int CreatedByUserID)
         {
             if (!this.IsActive)
-                return enReplaceDamgedLostValidationResult.LicenseInActive;
+                return enReplaceDamgedLostValidationResult.LicenseInactive;
 
             if (IsExpired())
                 return enReplaceDamgedLostValidationResult.LicenseExpired;
 
-            if (IsLicenseDetained())
+            if (IsLicenseDetained()!=-1)
                 return enReplaceDamgedLostValidationResult.LicenseDetained;
 
             Application ReplaceDamgedLostApp = new Application();
@@ -256,7 +271,55 @@ namespace DVLD_Business
 
             return enRenewLicenseValidationResult.Success;
         }
-      
+        public enDetainLicenseValidation Detain(DetainedLicense detainedLicense, int CreatedByUserID)
+        {
+            if (!this.IsActive)
+                return enDetainLicenseValidation.LicenseInactive;
+            if (this.IsLicenseDetained() != -1)
+                return enDetainLicenseValidation.LicenseDetained;
+
+            if (!_CreateLicenseDetainRecord(detainedLicense, CreatedByUserID))
+                return enDetainLicenseValidation.SaveFaild;
+
+            return enDetainLicenseValidation.Success;
+        }
+        public enReleaseLicenseValidation Release(DetainedLicense detainedLicense, int ReleasedByUserID)
+        {
+            if (this.IsLicenseDetained() == -1)
+                return enReleaseLicenseValidation.LicenseNotDetained;
+
+            Application ReleaseApp = new Application();
+            if (!_CreateLicenseApplication(this, ReleaseApp, ApplicationType.enApplicationType.ReleaseDetainedDrivingLicsense, CreatedByUserID))
+                return enReleaseLicenseValidation.AppFaildToSave;
+
+            if (!_IssueReleaseRecord(detainedLicense,ReleaseApp.ApplicationID, ReleasedByUserID))
+                return enReleaseLicenseValidation.SaveFaild;
+            
+            return enReleaseLicenseValidation.Success;
+
+        }
+        private bool _IssueReleaseRecord(DetainedLicense detainedLicense,int ReleaseAppID ,int ReleasedByUserID)
+        {
+            detainedLicense.IsReleased = true;
+            detainedLicense.ReleaseDate = DateTime.Now;
+            detainedLicense.ReleasedByUserID = ReleasedByUserID;
+            detainedLicense.ReleaseApplicationID = ReleaseAppID;
+
+            if (detainedLicense.Save())
+                return true;
+            return false;
+        }
+        private bool _CreateLicenseDetainRecord(DetainedLicense detainedLicense, int CreatedByUserID)
+        {
+            detainedLicense.LicneseID = this.LicenseID;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.CreatedByUserID = CreatedByUserID;
+            
+            if(detainedLicense.Save())
+                return true;
+            return false;
+
+        }
         private bool _CreateLicenseApplication(License OldLicense, Application App, ApplicationType.enApplicationType AppType , int CreatedByUserID)
         {
             ApplicationType ApplicationType = ApplicationType.Find((int)AppType);
@@ -365,7 +428,7 @@ namespace DVLD_Business
         {
             return LicenseDataAccess.IsLicenseExist(licenseID);
         }
-        public bool IsLicenseDetained()
+        public int IsLicenseDetained()
         {
             return LicenseDataAccess.IsLicenseDetained(this.LicenseID);
         }

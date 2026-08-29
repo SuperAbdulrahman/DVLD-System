@@ -58,7 +58,7 @@ namespace DVLD.License.Controls
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
            
         }
-        public void LoadPersonInfo(int licenseID)
+        public void LoadByLicenseID(int licenseID)
         {
             txtFindValue.Text = licenseID.ToString();
             FilterEnabled = false;

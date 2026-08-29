@@ -31,9 +31,9 @@
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.lblNotes = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ctrlLocalDrivingLicenseApplicationInfoCard1 = new DVLD.Applications.Controls.ctrlLocalDrivingLicenseApplicationInfoCard();
             this.btnIssue = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ctrlLocalDrivingLicenseApplicationInfoCard1 = new DVLD.Applications.Controls.ctrlLocalDrivingLicenseApplicationInfoCard();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,14 +67,6 @@
             this.pictureBox1.TabIndex = 80;
             this.pictureBox1.TabStop = false;
             // 
-            // ctrlLocalDrivingLicenseApplicationInfoCard1
-            // 
-            this.ctrlLocalDrivingLicenseApplicationInfoCard1.BackColor = System.Drawing.Color.White;
-            this.ctrlLocalDrivingLicenseApplicationInfoCard1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlLocalDrivingLicenseApplicationInfoCard1.Name = "ctrlLocalDrivingLicenseApplicationInfoCard1";
-            this.ctrlLocalDrivingLicenseApplicationInfoCard1.Size = new System.Drawing.Size(1063, 471);
-            this.ctrlLocalDrivingLicenseApplicationInfoCard1.TabIndex = 82;
-            // 
             // btnIssue
             // 
             this.btnIssue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -106,6 +98,14 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // ctrlLocalDrivingLicenseApplicationInfoCard1
+            // 
+            this.ctrlLocalDrivingLicenseApplicationInfoCard1.BackColor = System.Drawing.Color.White;
+            this.ctrlLocalDrivingLicenseApplicationInfoCard1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlLocalDrivingLicenseApplicationInfoCard1.Name = "ctrlLocalDrivingLicenseApplicationInfoCard1";
+            this.ctrlLocalDrivingLicenseApplicationInfoCard1.Size = new System.Drawing.Size(1063, 471);
+            this.ctrlLocalDrivingLicenseApplicationInfoCard1.TabIndex = 82;
+            // 
             // frmIssueDrivingLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -120,6 +120,7 @@
             this.Controls.Add(this.lblNotes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmIssueDrivingLicense";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmIssueDrivingLicense";
             this.Load += new System.EventHandler(this.frmIssueDrivingLicense_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -58,6 +58,24 @@
     <Compile Include="Applications\Controls\ctrlLocalDrivingLicenseApplicationInfoCard.Designer.cs">
       <DependentUpon>ctrlLocalDrivingLicenseApplicationInfoCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Detain\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detain\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Detain\frmListDetainLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detain\frmListDetainLicenses.Designer.cs">
+      <DependentUpon>frmListDetainLicenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Detain\frmReleaseDetainedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Detain\frmReleaseDetainedLicense.Designer.cs">
+      <DependentUpon>frmReleaseDetainedLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\frmAddEditNewLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +312,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Controls\ctrlLocalDrivingLicenseApplicationInfoCard.resx">
       <DependentUpon>ctrlLocalDrivingLicenseApplicationInfoCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detain\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detain\frmListDetainLicenses.resx">
+      <DependentUpon>frmListDetainLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Detain\frmReleaseDetainedLicense.resx">
+      <DependentUpon>frmReleaseDetainedLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\frmAddEditNewLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddEditNewLocalDrivingLicenseApplication.cs</DependentUpon>

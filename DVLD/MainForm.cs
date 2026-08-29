@@ -1,4 +1,5 @@
 ﻿using DVLD.Applications;
+using DVLD.Applications.Detain;
 using DVLD.ApplicationTypes;
 using DVLD.Drivers;
 using DVLD.License;
@@ -106,6 +107,24 @@ namespace DVLD
         private void renewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmRenewLicenseApplication frm = new frmRenewLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListDetainLicenses frm = new frmListDetainLicenses();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
+            frm.ShowDialog();
+        }
+
+        private void releaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense();
             frm.ShowDialog();
         }
     }

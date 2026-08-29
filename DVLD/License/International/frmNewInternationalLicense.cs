@@ -36,7 +36,7 @@ namespace DVLD.License.International
             lblIssueDateValue.Text = DateTime.Now.ToString();
             lblFeesValue.Text = _ApplicationType.ApplicationFees.ToString();
             lblExperationDateValue.Text =DateTime.Now.AddYears(_ILicense.ValidityLength).ToString();
-            lblCreatedByValue.Text = SessionInfo.testUser.UserName;
+            lblCreatedByValue.Text = SessionInfo.currentUser.UserName;
 
 
         }
@@ -129,7 +129,7 @@ namespace DVLD.License.International
             _ILicenseApplication.Status = DVLD_Business.Application.enApplicationStatus.Completed;
             _ILicenseApplication.LastStatusDate = DateTime.Now;
             _ILicenseApplication.PaidFees = _ApplicationType.ApplicationFees;
-            _ILicenseApplication.CreatedByUserID = SessionInfo.testUser.UserID;
+            _ILicenseApplication.CreatedByUserID = SessionInfo.currentUser.UserID;
 
             if (_ILicenseApplication.Save())
                 return true;
@@ -143,7 +143,7 @@ namespace DVLD.License.International
             _ILicense.DriverID = _LocalLicenseInfo.DriverID;
             _ILicense.IssuedUsingLicenseID = _LocalLicenseInfo.LicenseID;
             _ILicense.IsActive = true;
-            _ILicense.CreatedByUserID = SessionInfo.testUser.UserID;
+            _ILicense.CreatedByUserID = SessionInfo.currentUser.UserID;
 
             if(_ILicense.Save())
                 return true;

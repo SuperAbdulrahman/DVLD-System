@@ -37,11 +37,9 @@
             this.lblRecordsCountValue = new System.Windows.Forms.Label();
             this.lblRecords = new System.Windows.Forms.Label();
             this.dgvDriversList = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showAppDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ShowPersonLicenseHistorytoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeopleICon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDriversList)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -144,6 +142,25 @@
             this.dgvDriversList.Size = new System.Drawing.Size(1066, 274);
             this.dgvDriversList.TabIndex = 19;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.2F, System.Drawing.FontStyle.Bold);
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ShowPersonLicenseHistorytoolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 70);
+            // 
+            // ShowPersonLicenseHistorytoolStripMenuItem
+            // 
+            this.ShowPersonLicenseHistorytoolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
+            this.ShowPersonLicenseHistorytoolStripMenuItem.Image = global::DVLD.Properties.Resources.PersonLicenseHistory_32;
+            this.ShowPersonLicenseHistorytoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ShowPersonLicenseHistorytoolStripMenuItem.Name = "ShowPersonLicenseHistorytoolStripMenuItem";
+            this.ShowPersonLicenseHistorytoolStripMenuItem.Size = new System.Drawing.Size(276, 38);
+            this.ShowPersonLicenseHistorytoolStripMenuItem.Text = "Show Person License History";
+            this.ShowPersonLicenseHistorytoolStripMenuItem.Click += new System.EventHandler(this.ShowPersonLicenseHistorytoolStripMenuItem_Click);
+            // 
             // btnClose
             // 
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -159,41 +176,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.2F, System.Drawing.FontStyle.Bold);
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showAppDetailsToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.ShowPersonLicenseHistorytoolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 114);
-            // 
-            // showAppDetailsToolStripMenuItem
-            // 
-            this.showAppDetailsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
-            this.showAppDetailsToolStripMenuItem.Image = global::DVLD.Properties.Resources.PersonDetails_32;
-            this.showAppDetailsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.showAppDetailsToolStripMenuItem.Name = "showAppDetailsToolStripMenuItem";
-            this.showAppDetailsToolStripMenuItem.Size = new System.Drawing.Size(276, 38);
-            this.showAppDetailsToolStripMenuItem.Text = "Show Application Details";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(273, 6);
-            // 
-            // ShowPersonLicenseHistorytoolStripMenuItem
-            // 
-            this.ShowPersonLicenseHistorytoolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
-            this.ShowPersonLicenseHistorytoolStripMenuItem.Image = global::DVLD.Properties.Resources.PersonLicenseHistory_32;
-            this.ShowPersonLicenseHistorytoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ShowPersonLicenseHistorytoolStripMenuItem.Name = "ShowPersonLicenseHistorytoolStripMenuItem";
-            this.ShowPersonLicenseHistorytoolStripMenuItem.Size = new System.Drawing.Size(276, 38);
-            this.ShowPersonLicenseHistorytoolStripMenuItem.Text = "Show Person License History";
-            this.ShowPersonLicenseHistorytoolStripMenuItem.Click += new System.EventHandler(this.ShowPersonLicenseHistorytoolStripMenuItem_Click);
             // 
             // frmListDrivers
             // 
@@ -235,8 +217,6 @@
         private System.Windows.Forms.DataGridView dgvDriversList;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem showAppDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem ShowPersonLicenseHistorytoolStripMenuItem;
     }
 }

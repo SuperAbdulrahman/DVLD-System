@@ -108,7 +108,7 @@ namespace DVLD.License.Controls
             lblDriverIDValue.Text = _License.DriverID.ToString();
             lblExpirationDateValue.Text = _License.ExpirationDate.ToString();
 
-            lblIsDetainedValue.Text = _License.IsLicenseDetained()? "Yes" : "No";
+            lblIsDetainedValue.Text = _License.IsLicenseDetained()!=-1? "Yes" : "No";
 
             _LoadPersonImage();
         }

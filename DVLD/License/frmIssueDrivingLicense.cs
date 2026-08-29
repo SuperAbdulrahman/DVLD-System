@@ -69,7 +69,7 @@ namespace DVLD.License
             license.PaidFees = _LDLApp.LicenseClassInfo.Fees;
             license.IsActive = true;
             license.IssueReason = DVLD_Business.License.enIssueReason.FirstTime;
-            license.CreatedByUserID = SessionInfo.testUser.UserID;
+            license.CreatedByUserID = SessionInfo.currentUser.UserID;
 
             if(license.Save())
             {
@@ -87,7 +87,7 @@ namespace DVLD.License
             Driver driver = new Driver();
 
             driver.PersonID = _LDLApp.ApplicantPersonID;
-            driver.CreatedByUserID = SessionInfo.testUser.UserID;
+            driver.CreatedByUserID = SessionInfo.currentUser.UserID;
 
             if(!driver.Save())
             {

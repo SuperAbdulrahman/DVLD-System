@@ -297,11 +297,11 @@ namespace DVLD_DataAccess
             return activeLicenseID;
         }
 
-        public static bool IsLicenseDetained(int licenseID)
+        public static int IsLicenseDetained(int licenseID)
         {
-            bool isDetained = false;
+            int detainID = -1;
 
-            string query = @"SELECT 1 FROM DetainedLicenses WHERE LicenseID = @LicenseID
+            string query = @"SELECT DetainID FROM DetainedLicenses WHERE LicenseID = @LicenseID
                             AND IsReleased = 0 ;";
 
             try
@@ -315,14 +315,14 @@ namespace DVLD_DataAccess
                     object result = command.ExecuteScalar();
 
                     if (result != null)
-                        isDetained = true;
+                        detainID = Convert.ToInt32(result);
                 }
             }
             catch (Exception)
             {
             }
 
-            return isDetained;
+            return detainID;
         }
         public static DataTable GetLicenses()
         {

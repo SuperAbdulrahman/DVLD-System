@@ -103,7 +103,7 @@ namespace DVLD.Applications
             ApplicationType appType = ApplicationType.Find((int)ApplicationType.enApplicationType.NewDrivingLicense);
             lblDateResult.Text = DateTime.Now.ToString();
             // lblCreatedBy.Text = SessionInfo.currentUser.UserName;
-            lblCreatedByResult.Text = SessionInfo.testUser.UserName;
+            lblCreatedByResult.Text = SessionInfo.currentUser.UserName;
 
             lblFeesResult.Text = appType.ApplicationFees.ToString();
         }
@@ -166,7 +166,7 @@ namespace DVLD.Applications
             // ApplicationType appTypeInfo = ApplicationType.Find(_localDrivingLicenseApp.ApplicationTypeID);
             //_localDrivingLicenseApp.PaidFees = appTypeInfo.ApplicationFees;
             _localDrivingLicenseApp.PaidFees =decimal.Parse(lblFeesResult.Text.Trim());
-            _localDrivingLicenseApp.CreatedByUserID = SessionInfo.testUser.UserID;
+            _localDrivingLicenseApp.CreatedByUserID = SessionInfo.currentUser.UserID;
 
 
 

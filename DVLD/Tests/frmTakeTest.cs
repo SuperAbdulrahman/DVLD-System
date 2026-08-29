@@ -48,7 +48,7 @@ namespace DVLD.Tests
             _Test.TestAppointmentID = _TestAppointmentID;
             _Test.TestResult = rbPass.Checked;
             _Test.Notes = txtNotes.Text;
-            _Test.CreatedByUserID = SessionInfo.testUser.UserID;
+            _Test.CreatedByUserID = SessionInfo.currentUser.UserID;
             if (_Test.Save())
             {
                 MessageBox.Show("Test Result was added succesfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

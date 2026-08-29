@@ -1,4 +1,5 @@
-﻿using DVLD.People;
+﻿using DVLD.License;
+using DVLD.People;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -81,6 +82,8 @@ namespace DVLD.Applications.Controls
             lblDLAppIDValue.Text = _LDLApp.LocalDirivingLicenseID.ToString();
             lblAppliedForLicenseValue.Text = _LDLApp.LicenseClassInfo?.Name;
             _FillPassedTestsValue();
+            if(_PassedTests==3)
+                llShowLicenseInfo.Enabled=true;
             ctrlApplicationBasicInfoCard1.LoadAppInfoByAppID(_LDLApp.ApplicationID);
         }
         private void _FillPassedTestsValue()
@@ -98,7 +101,8 @@ namespace DVLD.Applications.Controls
 
         private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            frmDriverLicenseInfo frm = new frmDriverLicenseInfo(_LDLApp.ApplicationID,frmDriverLicenseInfo.enMode.AppID);
+            frm.ShowDialog();   
         }
     }
 }

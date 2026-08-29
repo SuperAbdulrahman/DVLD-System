@@ -452,7 +452,7 @@ namespace DVLD_ConsoleTest
                     Console.WriteLine("The user should renew the license instead.");
                     break;
 
-                case License.enReplaceDamgedLostValidationResult.LicenseInActive:
+                case License.enReplaceDamgedLostValidationResult.LicenseInactive:
                     Console.WriteLine("FAILED: The license is inactive.");
                     break;
 

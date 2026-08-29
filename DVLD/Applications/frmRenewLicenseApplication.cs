@@ -35,7 +35,7 @@ namespace DVLD.Applications
             lblIssueDateValue.Text = DateTime.Now.ToString();
             lblAppFeesValue.Text = _ApplicationType.ApplicationFees.ToString();
             //lblExperationDateValue.Text = DateTime.Now.AddYears().ToString();
-            lblCreatedByValue.Text = SessionInfo.testUser.UserName;
+            lblCreatedByValue.Text = SessionInfo.currentUser.UserName;
 
 
         }
@@ -90,7 +90,7 @@ namespace DVLD.Applications
             bool isSaved = false;
             _NewLicenseInfo = new DVLD_Business.License();
             _NewLicenseInfo.Notes = txtNotes.Text ?? string.Empty;
-            var result = _OldLicenseInfo.Renew(_NewLicenseInfo,SessionInfo.testUser.UserID);
+            var result = _OldLicenseInfo.Renew(_NewLicenseInfo,SessionInfo.currentUser.UserID);
             switch (result)
             {
                 case DVLD_Business.License.enRenewLicenseValidationResult.Success:

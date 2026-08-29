@@ -1,4 +1,5 @@
 ﻿using DVLD.Applications;
+using DVLD.Applications.Detain;
 using DVLD.ApplicationTypes;
 using DVLD.Drivers;
 using DVLD.License.International;
@@ -23,7 +24,7 @@ namespace DVLD
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new frmLoginScreen());
-            Application.Run(new frmReplacementForDamagedORLostLicense());
+            Application.Run(new frmLoginScreen());
            // Application.Run(new frmRenewLicenseApplication());
             //  Application.Run(new frmNewInternationalLicense());
             // Application.Run(new frmManageLDApplications());

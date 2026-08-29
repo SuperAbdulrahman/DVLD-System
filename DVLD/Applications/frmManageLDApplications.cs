@@ -68,7 +68,7 @@ namespace DVLD.Applications
             }
             _FormatDataGridView();
             _UpdateRecordsCounter();
-
+            _ResetFilter();
         }
         private int _CountRecords() => _dtLDLApplications?.DefaultView.Count ?? 0;
         private void _UpdateRecordsCounter()
@@ -134,7 +134,7 @@ namespace DVLD.Applications
                         _ResetFilter();
                         break;
                 case "National No":
-                    _FilterString("National No", filter);
+                    _FilterString("NationalNo", filter);
                     break;
                 case "Full Name":
                     _FilterString("FullName", filter);
