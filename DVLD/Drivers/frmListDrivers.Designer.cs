@@ -149,7 +149,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ShowPersonLicenseHistorytoolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 42);
             // 
             // ShowPersonLicenseHistorytoolStripMenuItem
             // 

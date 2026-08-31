@@ -509,7 +509,9 @@ namespace DVLD_ConsoleTest
             ///  TestGetApplicationTypes();
             //TestFindApplication(110);
             //TestFindLocalDrivingLicenseApplication(37);
-            TestReplaceDamagedLicense(25,1,ApplicationType.enApplicationType.ReplaceDamagedDrivingLicense);
+            // TestReplaceDamagedLicense(25,1,ApplicationType.enApplicationType.ReplaceDamagedDrivingLicense);
+            DVLD_DataAccess.LicenseDataAccess.SetLicenseActive(23, true);
+           
         }
     }
 }

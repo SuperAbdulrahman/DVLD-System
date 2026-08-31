@@ -101,7 +101,7 @@ namespace DVLD.License.Controls
             lblNationalNoValue.Text = _License.DriverInfo.PersonInfo.NationalNo;
             lblGenderValue.Text = (_License.DriverInfo.PersonInfo.Gender)? "Female" : "Male";
             lblIssueDateValue.Text = _License.IssueDate.ToString();
-            lblIssueReasonValue.Text = _License.IssueReason.ToString();
+            lblIssueReasonValue.Text = _License.GetIssueReasonText;
             lblNotesValue.Text = _License.Notes ?? "N/A";
             lblIsActiveValue.Text = (_License.IsActive) ? "Yes" : "No";
             lblDOBValue.Text = _License.DriverInfo.PersonInfo.DateOfBirth.ToString();

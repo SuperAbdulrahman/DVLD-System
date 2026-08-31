@@ -4,3 +4,8 @@ obj/
 
 ## ignore the dvld architecture code
 DVLD_Architecture_Code.txt
+
+## ignore Claude code
+.claude
+
+DVLD_UI_Inventory_Report.md

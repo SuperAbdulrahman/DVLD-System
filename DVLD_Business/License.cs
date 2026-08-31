@@ -59,6 +59,26 @@ namespace DVLD_Business
         public decimal PaidFees { get; set; }
         public bool IsActive { get; set; }
         public enIssueReason IssueReason { get; set; }
+        public string GetIssueReasonText
+        {
+            get
+            {
+                switch (IssueReason)
+                {
+                    case enIssueReason.FirstTime:
+                        return "First Time";
+                    case enIssueReason.Renew:
+                        return "Renew";
+                    case enIssueReason.ReplacementForDamaged:
+                        return "Replacement For Damged";
+                    case enIssueReason.ReplacementForLost:
+                        return "Replacement For Lost";
+                    default:
+                        break;
+                }
+                return "";
+            }
+        }
         public int CreatedByUserID;
 
 
@@ -237,11 +257,15 @@ namespace DVLD_Business
                 return enReplaceDamgedLostValidationResult.SaveFaild;
             }
 
-            this.IsActive = false;
-            if (!this.Save())
+          
+            if (!SetLicenseActiveState(this.LicenseID,false))
                 return enReplaceDamgedLostValidationResult.AppFaildToSave;
 
             return enReplaceDamgedLostValidationResult.Success;
+        }
+        public static bool SetLicenseActiveState(int licenseID,bool isActive)
+        {
+            return LicenseDataAccess.SetLicenseActiveState(licenseID,isActive);
         }
         public static bool Delete(int licenseID)
         {
@@ -265,8 +289,8 @@ namespace DVLD_Business
                 return enRenewLicenseValidationResult.SaveFaild;
             }
 
-            this.IsActive = false;
-            if(!this.Save())
+    
+            if(!SetLicenseActiveState(this.LicenseID,false))
                 return enRenewLicenseValidationResult.SaveFaild;
 
             return enRenewLicenseValidationResult.Success;

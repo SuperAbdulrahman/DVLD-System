@@ -230,7 +230,30 @@ namespace DVLD_DataAccess
 
             return (rowsAffected > 0);
         }
+        public static bool SetLicenseActive(int licenseID,bool isActive)
+        {
+            int rowsAffected = 0;
 
+            string query = @"UPDATE Licenses SET IsActive =@IsActive WHERE LicenseID = @LicenseID;";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataAccessSettings.connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LicenseID", licenseID);
+                    command.Parameters.AddWithValue("@IsActive", isActive);
+                    connection.Open();
+
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return (rowsAffected > 0);
+        }
         public static bool IsLicenseExist(int licenseID)
         {
             bool isFound = false;
