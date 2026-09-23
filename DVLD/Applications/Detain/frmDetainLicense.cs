@@ -48,10 +48,16 @@ namespace DVLD.Applications.Detain
 
         private bool _HandleDetainProcess()
         {
+            bool isSaved = false;
             // Fill needed info:
             _DetainedLicense = new DetainedLicense();
             _DetainedLicense.FineFees = numericUpDownFees.Value;
-            bool isSaved = false;
+            if(_DetainedLicense.FineFees ==0)
+            {
+                MessageBox.Show("Please Enter amount greater than 0 !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return isSaved;
+            }
+            
             var result = _LicenseInfo.Detain(_DetainedLicense,SessionInfo.currentUser.UserID);
             switch (result)
             {

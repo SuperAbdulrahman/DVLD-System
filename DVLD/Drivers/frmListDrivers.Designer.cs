@@ -38,6 +38,7 @@
             this.lblRecords = new System.Windows.Forms.Label();
             this.dgvDriversList = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ShowPersonInfotoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ShowPersonLicenseHistorytoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeopleICon)).BeginInit();
@@ -50,7 +51,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblTitle.Location = new System.Drawing.Point(391, 187);
+            this.lblTitle.Location = new System.Drawing.Point(391, 157);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(308, 54);
             this.lblTitle.TabIndex = 13;
@@ -59,9 +60,9 @@
             // pbManagePeopleICon
             // 
             this.pbManagePeopleICon.Image = global::DVLD.Properties.Resources.MangeDrivers;
-            this.pbManagePeopleICon.Location = new System.Drawing.Point(433, 24);
+            this.pbManagePeopleICon.Location = new System.Drawing.Point(446, 12);
             this.pbManagePeopleICon.Name = "pbManagePeopleICon";
-            this.pbManagePeopleICon.Size = new System.Drawing.Size(201, 160);
+            this.pbManagePeopleICon.Size = new System.Drawing.Size(194, 142);
             this.pbManagePeopleICon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbManagePeopleICon.TabIndex = 14;
             this.pbManagePeopleICon.TabStop = false;
@@ -78,7 +79,7 @@
             "Person ID",
             "National No.",
             "Full Name"});
-            this.cbFilterByOptions.Location = new System.Drawing.Point(107, 252);
+            this.cbFilterByOptions.Location = new System.Drawing.Point(111, 221);
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(188, 31);
             this.cbFilterByOptions.TabIndex = 24;
@@ -88,7 +89,7 @@
             // txtbFilterSearchBar
             // 
             this.txtbFilterSearchBar.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtbFilterSearchBar.Location = new System.Drawing.Point(301, 253);
+            this.txtbFilterSearchBar.Location = new System.Drawing.Point(305, 222);
             this.txtbFilterSearchBar.Name = "txtbFilterSearchBar";
             this.txtbFilterSearchBar.Size = new System.Drawing.Size(501, 28);
             this.txtbFilterSearchBar.TabIndex = 23;
@@ -99,7 +100,7 @@
             // 
             this.lblFilterBy.AutoSize = true;
             this.lblFilterBy.Font = new System.Drawing.Font("Segoe UI Semibold", 12.8F, System.Drawing.FontStyle.Bold);
-            this.lblFilterBy.Location = new System.Drawing.Point(12, 253);
+            this.lblFilterBy.Location = new System.Drawing.Point(16, 222);
             this.lblFilterBy.Name = "lblFilterBy";
             this.lblFilterBy.Size = new System.Drawing.Size(99, 30);
             this.lblFilterBy.TabIndex = 22;
@@ -110,7 +111,7 @@
             this.lblRecordsCountValue.AutoSize = true;
             this.lblRecordsCountValue.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordsCountValue.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblRecordsCountValue.Location = new System.Drawing.Point(124, 577);
+            this.lblRecordsCountValue.Location = new System.Drawing.Point(128, 546);
             this.lblRecordsCountValue.Name = "lblRecordsCountValue";
             this.lblRecordsCountValue.Size = new System.Drawing.Size(23, 28);
             this.lblRecordsCountValue.TabIndex = 21;
@@ -120,7 +121,7 @@
             // 
             this.lblRecords.AutoSize = true;
             this.lblRecords.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecords.Location = new System.Drawing.Point(12, 577);
+            this.lblRecords.Location = new System.Drawing.Point(16, 546);
             this.lblRecords.Name = "lblRecords";
             this.lblRecords.Size = new System.Drawing.Size(106, 28);
             this.lblRecords.TabIndex = 20;
@@ -134,7 +135,7 @@
             this.dgvDriversList.BackgroundColor = System.Drawing.Color.White;
             this.dgvDriversList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDriversList.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvDriversList.Location = new System.Drawing.Point(17, 289);
+            this.dgvDriversList.Location = new System.Drawing.Point(21, 258);
             this.dgvDriversList.Name = "dgvDriversList";
             this.dgvDriversList.ReadOnly = true;
             this.dgvDriversList.RowHeadersWidth = 51;
@@ -147,9 +148,20 @@
             this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.2F, System.Drawing.FontStyle.Bold);
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ShowPersonInfotoolStripMenuItem1,
             this.ShowPersonLicenseHistorytoolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 42);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(277, 80);
+            // 
+            // ShowPersonInfotoolStripMenuItem1
+            // 
+            this.ShowPersonInfotoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.2F, System.Drawing.FontStyle.Bold);
+            this.ShowPersonInfotoolStripMenuItem1.Image = global::DVLD.Properties.Resources.PersonDetails_32;
+            this.ShowPersonInfotoolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ShowPersonInfotoolStripMenuItem1.Name = "ShowPersonInfotoolStripMenuItem1";
+            this.ShowPersonInfotoolStripMenuItem1.Size = new System.Drawing.Size(276, 38);
+            this.ShowPersonInfotoolStripMenuItem1.Text = "Show Person Info";
+            this.ShowPersonInfotoolStripMenuItem1.Click += new System.EventHandler(this.ShowPersonInfotoolStripMenuItem1_Click);
             // 
             // ShowPersonLicenseHistorytoolStripMenuItem
             // 
@@ -169,7 +181,7 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(929, 569);
+            this.btnClose.Location = new System.Drawing.Point(933, 538);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(154, 43);
             this.btnClose.TabIndex = 25;
@@ -182,7 +194,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1095, 614);
+            this.ClientSize = new System.Drawing.Size(1095, 592);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.cbFilterByOptions);
             this.Controls.Add(this.txtbFilterSearchBar);
@@ -218,5 +230,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ShowPersonLicenseHistorytoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ShowPersonInfotoolStripMenuItem1;
     }
 }

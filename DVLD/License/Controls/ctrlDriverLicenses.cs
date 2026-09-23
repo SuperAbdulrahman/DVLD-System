@@ -53,6 +53,11 @@ namespace DVLD.License.Controls
             _RefreshInternationalLicensesList();
             return true;
         }
+        public void Clear ()
+        {
+            _dtInternationalLicenesesList.Clear();
+            _dtLocalLicensesList.Clear();
+        }
         private void _RefreshLocalLicensesList()
         {
             _dtLocalLicensesList = DVLD_Business.License.GetLicensesHistoryForDriver(_DriverID);

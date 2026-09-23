@@ -24,13 +24,23 @@ namespace DVLD.License
             ctrPersonCardWithFilter1.LoadPersonInfo(_PersonID);
             ctrPersonCardWithFilter1.FilterEnabled = false;
             
-            if (!ctrlDriverLicenses1.LoadDriverLicensesCardInfoByDPersonID(_PersonID))
-                this.Close();
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ctrPersonCardWithFilter1_OnPersonSelected(int obj)
+        {
+            if(obj==-1)
+            {
+                ctrlDriverLicenses1.Clear();
+                return;
+            }
+            if (!ctrlDriverLicenses1.LoadDriverLicensesCardInfoByDPersonID(_PersonID))
+                this.Close();
         }
     }
 }

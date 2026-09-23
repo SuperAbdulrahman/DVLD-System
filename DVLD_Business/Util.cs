@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32;
 
 namespace DVLD_Business
 {
@@ -11,6 +12,13 @@ namespace DVLD_Business
     {
         private static string  _txtFileName = "D:\\DVLD-Full-Project\\session-data.txt";
         private static string _DestinationFolder = @"C:\DVLD-People-Images\";
+
+        //win registery names
+        private static string  _KeyPath = @"HKEY_CURRENT_USER\SOFTWARE\DVLD";
+        private static string _VUsername= "Username";
+        private static string _VPassword = "Password";
+
+
         public static string GenerateGUID()
         {
             Guid newGUID = Guid.NewGuid();
@@ -79,6 +87,52 @@ namespace DVLD_Business
             string password = parts[1];
 
             return parts;
+        }
+
+        // Save session info to windows registery
+        public static bool SaveLoginDataToWinRegistery(string username,string password)
+        {
+            bool isSaved = true;
+            
+    
+
+            //we write the value
+            try
+            {
+                Registry.SetValue(_KeyPath, _VUsername, username);
+                Registry.SetValue(_KeyPath, _VPassword, password);
+
+            }
+            catch (Exception)
+            {
+
+                // we can log the error message here
+                isSaved = false;
+            }
+
+            return isSaved;
+        }
+
+        public static  bool LoadLoginDataFromWinRegistery(string[] values)
+        {
+            bool isFound = true;
+            
+            try
+            {
+                string username = Registry.GetValue(_KeyPath, _VUsername, null) as string;
+                string password = Registry.GetValue(_KeyPath, _VPassword, null) as string;
+                if (username != null || password != null)
+                    return false;
+                values[0]=username;
+                values[1]=password;
+            }
+            catch (Exception)
+            {
+
+               //Log error here
+               isFound = false;
+            }
+            return isFound;
         }
 
     }

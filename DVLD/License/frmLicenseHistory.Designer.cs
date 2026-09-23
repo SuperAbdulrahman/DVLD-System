@@ -82,6 +82,7 @@
             this.ctrPersonCardWithFilter1.ShowAddPerson = true;
             this.ctrPersonCardWithFilter1.Size = new System.Drawing.Size(1064, 482);
             this.ctrPersonCardWithFilter1.TabIndex = 14;
+            this.ctrPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrPersonCardWithFilter1_OnPersonSelected);
             // 
             // ctrlDriverLicenses1
             // 

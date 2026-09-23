@@ -295,7 +295,7 @@ namespace DVLD_Business
 
             return enRenewLicenseValidationResult.Success;
         }
-        public enDetainLicenseValidation Detain(DetainedLicense detainedLicense, int CreatedByUserID)
+          public enDetainLicenseValidation Detain(DetainedLicense detainedLicense, int CreatedByUserID)
         {
             if (!this.IsActive)
                 return enDetainLicenseValidation.LicenseInactive;
@@ -307,7 +307,7 @@ namespace DVLD_Business
 
             return enDetainLicenseValidation.Success;
         }
-        public enReleaseLicenseValidation Release(DetainedLicense detainedLicense, int ReleasedByUserID)
+      public enReleaseLicenseValidation Release(DetainedLicense detainedLicense, int ReleasedByUserID)
         {
             if (this.IsLicenseDetained() == -1)
                 return enReleaseLicenseValidation.LicenseNotDetained;

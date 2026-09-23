@@ -8,4 +8,7 @@ DVLD_Architecture_Code.txt
 ## ignore Claude code
 .claude
 
+##ignore the old session txt file
+session-data.txt
+
 DVLD_UI_Inventory_Report.md

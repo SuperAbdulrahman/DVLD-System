@@ -41,20 +41,22 @@ namespace DVLD.Users
         {
             if (dgvUsersList.Rows.Count > 0)
             {
+                dgvUsersList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
                 dgvUsersList.Columns["UserID"].HeaderText = "User ID";
-                dgvUsersList.Columns["UserID"].Width = 90;
+                dgvUsersList.Columns["UserID"].FillWeight = 12;
 
                 dgvUsersList.Columns["PersonID"].HeaderText = "Person ID";
-                dgvUsersList.Columns["PersonID"].Width = 90;
+                dgvUsersList.Columns["PersonID"].FillWeight = 12;
 
                 dgvUsersList.Columns["FullName"].HeaderText = "Full Name";
-                dgvUsersList.Columns["FullName"].Width = 250;
+                dgvUsersList.Columns["FullName"].FillWeight = 30;
 
                 dgvUsersList.Columns["UserName"].HeaderText = "Username";
-                dgvUsersList.Columns["UserName"].Width = 120;
+                dgvUsersList.Columns["UserName"].FillWeight = 30;
 
                 dgvUsersList.Columns["IsActive"].HeaderText = "Is Active";
-                dgvUsersList.Columns["IsActive"].Width = 90;
+                dgvUsersList.Columns["IsActive"].FillWeight = 10;
             }
         }
 

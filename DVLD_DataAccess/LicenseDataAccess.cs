@@ -230,7 +230,7 @@ namespace DVLD_DataAccess
 
             return (rowsAffected > 0);
         }
-        public static bool SetLicenseActive(int licenseID,bool isActive)
+        public static bool SetLicenseActiveState(int licenseID,bool isActive)
         {
             int rowsAffected = 0;
 

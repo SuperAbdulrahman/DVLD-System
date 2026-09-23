@@ -318,7 +318,8 @@
             // frmAddEditUser
             // 
             this.AcceptButton = this.btnSave;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1116, 754);
             this.Controls.Add(this.tabControl1);

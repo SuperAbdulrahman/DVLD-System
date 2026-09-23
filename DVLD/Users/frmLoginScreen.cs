@@ -61,10 +61,10 @@ namespace DVLD.Users
                 if(frm.IsLoggingOut)
                 {
                     _LoadRememberedCredentials();
-                    this.Show();
+                    Show();
                 }
                 else
-                    this.Close();   
+                    Close();   
 
             }
             
@@ -103,15 +103,23 @@ namespace DVLD.Users
         }
         private void _SaveRememberedCredentials(string username,string password)
         {
-            Util.SaveLoginDataToSessionFile(username, password);
+            Util.SaveLoginDataToWinRegistery(username, password);
+           // Util.SaveLoginDataToSessionFile(username, password);
             //SessionInfo.currentUsername = username;
             //SessionInfo.currentPassword = password;
         }
         private void _LoadRememberedCredentials()
         {
-            string[] LoginInfo = Util.LoadLoginDataFromSessionFile();
-            txtUsername.Text = LoginInfo[0];
-            txtPassword.Text = LoginInfo[1];
+            //  string[] LoginInfo = Util.LoadLoginDataFromSessionFile();
+            string[] LoginInfo = new string [2];
+            if(Util.LoadLoginDataFromWinRegistery(LoginInfo))
+            {
+                txtUsername.Text = LoginInfo[0];
+                txtPassword.Text = LoginInfo[1];
+            }
+            else
+                MessageBox.Show("An error Occured!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             //txtUsername.Text = SessionInfo.currentUsername;a
             //txtPassword.Text = SessionInfo.currentPassword;
         }

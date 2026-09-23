@@ -114,7 +114,10 @@ namespace DVLD_DataAccess
         {
             int newInternationalLicenseID = -1;
 
-            string query = @"INSERT INTO InternationalLicenses
+            string query = @" UPDATE InternationalLicenses SET IsActive = 0
+                              WHERE DriverID =@DriverID;
+
+                             INSERT INTO InternationalLicenses
                              (ApplicationID, DriverID, IssuedUsingLocalLicenseID,
                               IssueDate, ExpirationDate, IsActive, CreatedByUserID)
                              VALUES
@@ -251,7 +254,7 @@ namespace DVLD_DataAccess
 
             string query = @"SELECT 1 FROM InternationalLicenses AS i
                             JOIN Drivers AS d ON i.DriverID = d.DriverID
-                            WHERE d.PersonID =@PersonID";
+                            WHERE d.PersonID =@PersonID AND GetDate() BETWEEN i.IssueDate AND i.ExpirationDate;";
 
             try
             {

@@ -112,6 +112,5 @@ namespace DVLD.License.Controls
 
             _LoadPersonImage();
         }
-
     }
 }
